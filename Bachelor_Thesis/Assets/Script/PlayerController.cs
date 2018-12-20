@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Networking;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : NetworkBehaviour {
 
@@ -13,8 +14,8 @@ public class PlayerController : NetworkBehaviour {
             return;
         }
 
-        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 10.0f;
-        var y = Input.GetAxis("Vertical") * Time.deltaTime * 10.0f;
+        var x = CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * 10.0f;
+        var y = CrossPlatformInputManager.GetAxis("Vertical") * Time.deltaTime * 10.0f;
         
         transform.Translate(x, y, 0);
 
