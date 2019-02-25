@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 224842355858005752}
+  destroyOnDeath: 0
   currentHealth: 100
 --- !u!114 &114109674286983576
 MonoBehaviour:
@@ -327,6 +328,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1198381732186898, guid: 0371ced73608ec44281df5c5f1e42805,
     type: 2}
   bulletSpawn: {fileID: 4403574128008954}
+  width: 30
+  height: 15
 --- !u!114 &114385461395063412
 MonoBehaviour:
   m_ObjectHideFlags: 1
