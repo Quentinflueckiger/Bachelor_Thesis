@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Networking;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityStandardAssets.CrossPlatformInput;
+//using UnityStandardAssets.CrossPlatformInput;
 using System;
 
 public class PlayerController : NetworkBehaviour {
@@ -23,17 +23,17 @@ public class PlayerController : NetworkBehaviour {
 
         Move(xi,yi); 
 
-
+        /*
         var xc = CrossPlatformInputManager.GetAxis("Horizontal") * Time.deltaTime * 100.0f;
         var yc = CrossPlatformInputManager.GetAxis("Vertical") * Time.deltaTime * 100.0f;
-
-        Move(xc, yc);
+        */
+        //Move(xc, yc);
 
         CheckIfInPlayGround();
 
-        var fire = CrossPlatformInputManager.GetAxis("Fire"); 
+        //var fire = CrossPlatformInputManager.GetAxis("Fire"); 
 
-        if (Input.GetKeyDown(KeyCode.Space) || fire > 0f)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             CmdFire();
         }
