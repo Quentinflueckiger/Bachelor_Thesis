@@ -25,7 +25,7 @@ public class SetupLocalPlayer : NetworkBehaviour {
     //[SyncVar (hook = "OnChangeHealth")]
     public int healthValue = 100;
 
-    // Syncvar not working since 07.03.2019
+    // Syncvar not working since 07.03.2019, working again the week after ...
     // It makes the client freeze and get stuck that way
     // Using Rpc instead of syncvar from now on
 
