@@ -16,6 +16,8 @@ public class SnakeCollision : MonoBehaviour
         else if (other.gameObject.tag == "Tail")
         {
             // TODO : Add code to check the color and steal this part
+            //gameObject.SetActive(false);
+            //GetComponent<TestPlayerController>().CancelStepUpdate();
         }
     }
 
@@ -31,6 +33,8 @@ public class SnakeCollision : MonoBehaviour
 
     private void AddBoxToSnake(GameObject box)
     {
-
+        // TODO : Add box to tail of snake
+        Debug.Log("Box eaten! MIAM !");
+        GetComponent<SnakeTailController>().AddToTail();
     }
 }

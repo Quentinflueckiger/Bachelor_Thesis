@@ -4,31 +4,51 @@ using UnityEngine;
 
 public class TestPlayerController : MonoBehaviour
 {
-
+    // TODO: Put this variable in a game manager
     public float timeStep = 0.1f;
 
-    private Vector3 direction = new Vector3(0, 0, 0);
+    [HideInInspector]
+    public Transform bodyHolder;
 
-    // Start is called before the first frame update
+    private enum directionFacing {Up, Down, Right, Left };
+
+    private directionFacing playerDirection;
+
+    private SnakeTailController stc;
+
+    #region Vector direction definition
+    private Vector3 direction = new Vector3(0, 0, 0);
+    private Vector3 directionUp = new Vector3(0, 1, 0);
+    private Vector3 directionDown = new Vector3(0, -1, 0);
+    private Vector3 directionRight = new Vector3(1, 0, 0);
+    private Vector3 directionLeft = new Vector3(-1, 0, 0);
+    #endregion
+
+    /*private void Awake()
+    {
+        bodyHolder = new GameObject("Player").transform;
+        transform.parent = bodyHolder;
+    }*/
     void Start()
     {
-        InvokeRepeating("StepUpdate", 0, timeStep);             //Snake.timeStep
+        InvokeRepeating("StepUpdate", 0, timeStep);
+        stc = GetComponent<SnakeTailController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.UpArrow))
-            direction = new Vector3(0, 1, 0);
+            GoUp();
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
-            direction = new Vector3(0, -1, 0);
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            direction = new Vector3(-1, 0, 0);
+            GoDown();
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
-            direction = new Vector3(1, 0, 0);
+            GoRight();
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            GoLeft();
     }
 
     public void CancelStepUpdate()
@@ -38,5 +58,53 @@ public class TestPlayerController : MonoBehaviour
     private void StepUpdate()
     {
         transform.position += direction;
+        stc.SetOldPos(transform);
+        stc.MoveTail();
     }
+
+    private void SetDirection(Vector3 directionToFace)
+    {
+        direction = directionToFace;
+    }
+
+    public Vector3 GetDirection()
+    {
+        return direction;
+    }
+
+    #region Button functions
+    public void GoUp()
+    {
+        if (playerDirection != directionFacing.Down)
+        {
+            playerDirection = directionFacing.Up;
+            SetDirection(directionUp);
+        }
+            
+    }
+    public void GoDown()
+    {
+        if (playerDirection != directionFacing.Up)
+        {
+            playerDirection = directionFacing.Down;
+            SetDirection(directionDown);
+        }
+    }
+    public void GoRight()
+    {
+        if (playerDirection != directionFacing.Left)
+        {
+            playerDirection = directionFacing.Right;
+            SetDirection(directionRight);
+        }
+    }
+    public void GoLeft()
+    {
+        if (playerDirection != directionFacing.Right)
+        {
+            playerDirection = directionFacing.Left;
+            SetDirection(directionLeft);
+        }
+    }
+    #endregion
 }

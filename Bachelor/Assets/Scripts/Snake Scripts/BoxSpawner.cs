@@ -80,6 +80,7 @@ public class BoxSpawner : MonoBehaviour
         return true;
     }
 
+    // Idea not kept, used Raycast2D
     private bool CheckIfEmptyWithMatrix(int x, int y)
     {
         // TODO : Create a matrix from Width x Height and check the surroundings from x,y
