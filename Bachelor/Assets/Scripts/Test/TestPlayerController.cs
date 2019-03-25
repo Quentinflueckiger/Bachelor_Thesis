@@ -32,7 +32,7 @@ public class TestPlayerController : NetworkBehaviour
     }*/
     void Start()
     {
-        InvokeRepeating("StepUpdate", 0, timeStep);
+        InvokeRepeating("CmdStepUpdate", 0, timeStep);
         // stc = GetComponent<SnakeTailController>();
     }
 
@@ -52,12 +52,14 @@ public class TestPlayerController : NetworkBehaviour
             GoLeft();
     }
 
-    public void CancelStepUpdate()
+    [Command]
+    public void CmdCancelStepUpdate()
     {
-        CancelInvoke("StepUpdate");
+        CancelInvoke("CmdStepUpdate");
     }
 
-    private void StepUpdate()
+    [Command]
+    private void CmdStepUpdate()
     {
         transform.position += direction;
         /*  Tail part

@@ -11,7 +11,7 @@ public class SnakeCollision : MonoBehaviour
         {
             // Only death awaits
             gameObject.SetActive(false);
-            GetComponent<TestPlayerController>().CancelStepUpdate();
+            GetComponent<TestPlayerController>().CmdCancelStepUpdate();
         }
         else if (other.gameObject.tag == "Tail")
         {

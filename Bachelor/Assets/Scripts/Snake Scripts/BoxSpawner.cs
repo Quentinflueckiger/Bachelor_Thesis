@@ -48,7 +48,6 @@ public class BoxSpawner : NetworkBehaviour
             GameObject newBox = Instantiate(box, spawnPosition, transform.rotation, transform);
             NetworkServer.Spawn(newBox);
         }
-
            
     }
 
@@ -90,48 +89,4 @@ public class BoxSpawner : NetworkBehaviour
     }
 
 }
-
-/**
- * Network version
-public class BoxSpawner : NetworkBehaviour
-{
-
-    public int maxBoxes = 10;
-    public int spawnInterval = 5;
-
-    public GameObject box;
-
-    // Todo: Put those variables in a game manager
-    public int offSetSize;
-    private int halfWidth = 81;
-    private int halfHeight = 43;
-
-    public override void OnStartServer()
-    {
-        InvokeRepeating("SpawnBoxes", 0, spawnInterval);
-        //halfWidth = GameManager.x;
-        //halfHeight = GameManager.y;
-    }
-
-    private void SpawnBoxes()
-    {
-        for (int i = 0; i < maxBoxes - GetCurrentAmountOfBoxes(); i++)
-        {
-            SpawnBox();
-        }
-    }
-
-    private void SpawnBox()
-    {
-        Vector3 spawnPosition = new Vector3(Random.Range(-(halfWidth - offSetSize), halfWidth - offSetSize), Random.Range(-(halfHeight - offSetSize), halfHeight - offSetSize), 0);
-        GameObject newBox = Instantiate(box, spawnPosition, transform.rotation, transform);
-        NetworkServer.Spawn(newBox);                // Unsure this is necessary
-    }
-
-    private static int GetCurrentAmountOfBoxes()
-    {
-        // Todo: Try with a public static int which gets incr or decr when a box spawns or get eaten
-        return GameObject.FindGameObjectsWithTag("Box").Length;
-    }
-}*/
 
