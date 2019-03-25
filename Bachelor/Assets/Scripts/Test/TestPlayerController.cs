@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class TestPlayerController : MonoBehaviour
+public class TestPlayerController : NetworkBehaviour
 {
     // TODO: Put this variable in a game manager
     public float timeStep = 0.1f;
@@ -14,7 +15,7 @@ public class TestPlayerController : MonoBehaviour
 
     private directionFacing playerDirection;
 
-    private SnakeTailController stc;
+    // private SnakeTailController stc;
 
     #region Vector direction definition
     private Vector3 direction = new Vector3(0, 0, 0);
@@ -32,7 +33,7 @@ public class TestPlayerController : MonoBehaviour
     void Start()
     {
         InvokeRepeating("StepUpdate", 0, timeStep);
-        stc = GetComponent<SnakeTailController>();
+        // stc = GetComponent<SnakeTailController>();
     }
 
     void Update()
@@ -55,11 +56,14 @@ public class TestPlayerController : MonoBehaviour
     {
         CancelInvoke("StepUpdate");
     }
+
     private void StepUpdate()
     {
         transform.position += direction;
+        /*  Tail part
         stc.SetOldPos(transform);
         stc.MoveTail();
+        */
     }
 
     private void SetDirection(Vector3 directionToFace)

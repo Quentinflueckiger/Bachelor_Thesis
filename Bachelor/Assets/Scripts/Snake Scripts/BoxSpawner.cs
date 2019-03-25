@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class BoxSpawner : MonoBehaviour
+public class BoxSpawner : NetworkBehaviour
 {
 
     public int maxBoxes = 10;
@@ -15,7 +16,7 @@ public class BoxSpawner : MonoBehaviour
     private int halfWidth = 81;
     private int halfHeight = 43;      
 
-    private void Start()
+    public override void OnStartServer()
     {
         InvokeRepeating("SpawnBoxes", 0, spawnInterval);
         halfWidth -= offSetSize;
@@ -45,6 +46,7 @@ public class BoxSpawner : MonoBehaviour
         if (CheckIfEmptyAtPosition(spawnPosition))
         {
             GameObject newBox = Instantiate(box, spawnPosition, transform.rotation, transform);
+            NetworkServer.Spawn(newBox);
         }
 
            

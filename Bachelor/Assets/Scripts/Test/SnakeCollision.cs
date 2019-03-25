@@ -17,7 +17,7 @@ public class SnakeCollision : MonoBehaviour
         {
             // TODO : Add code to check the color and steal this part
             //gameObject.SetActive(false);
-            //GetComponent<TestPlayerController>().CancelStepUpdate();
+            //GetComponent<TestPlayerController>().CmdCancelStepUpdate();
         }
     }
 
@@ -27,6 +27,7 @@ public class SnakeCollision : MonoBehaviour
         {
             AddBoxToSnake(other.gameObject);
 
+            // TODO : Use object pool
             Destroy(other.gameObject);
         }
     }
@@ -35,6 +36,6 @@ public class SnakeCollision : MonoBehaviour
     {
         // TODO : Add box to tail of snake
         Debug.Log("Box eaten! MIAM !");
-        GetComponent<SnakeTailController>().AddToTail();
+        // GetComponent<SnakeTailController>().AddToTail();
     }
 }
