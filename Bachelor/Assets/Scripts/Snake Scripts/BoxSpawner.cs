@@ -10,6 +10,7 @@ public class BoxSpawner : NetworkBehaviour
     public int spawnInterval = 5;
 
     public GameObject box;
+    public Material[] spriteMaterial;
 
     // TODO: Put those variables in a game manager
     public int offSetSize;
@@ -45,7 +46,9 @@ public class BoxSpawner : NetworkBehaviour
 
         if (CheckIfEmptyAtPosition(spawnPosition))
         {
+            int i = Random.Range(0, spriteMaterial.Length);
             GameObject newBox = Instantiate(box, spawnPosition, transform.rotation, transform);
+            newBox.GetComponent<SpriteRenderer>().material = spriteMaterial[i];
             NetworkServer.Spawn(newBox);
         }
            
@@ -74,7 +77,7 @@ public class BoxSpawner : NetworkBehaviour
 
         if ( hit.collider != null)
         {
-            Debug.Log("NAME COLL: " + hit.collider.name);
+            // Debug.Log("NAME COLL: " + hit.collider.name);
             return false;
         }
 

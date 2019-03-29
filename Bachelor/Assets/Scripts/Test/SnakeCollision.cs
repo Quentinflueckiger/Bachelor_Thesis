@@ -16,8 +16,9 @@ public class SnakeCollision : MonoBehaviour
         else if (other.gameObject.tag == "Tail")
         {
             // TODO : Add code to check the color and steal this part
-            //gameObject.SetActive(false);
-            //GetComponent<TestPlayerController>().CmdCancelStepUpdate();
+            gameObject.SetActive(false);
+            GetComponent<TestPlayerController>().CmdCancelStepUpdate();
+            Debug.Log("Hit tail");
         }
     }
 
@@ -25,6 +26,7 @@ public class SnakeCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Box")
         {
+            // TODO : Different value for spawned boxes ?
             AddBoxToSnake(other.gameObject);
 
             // TODO : Use object pool
@@ -34,8 +36,9 @@ public class SnakeCollision : MonoBehaviour
 
     private void AddBoxToSnake(GameObject box)
     {
-        // TODO : Add box to tail of snake
-        Debug.Log("Box eaten! MIAM !");
-        // GetComponent<SnakeTailController>().AddToTail();
+        // TODO : Done : Add box to tail of snake
+        //               Use box to send color
+        GetComponent<SnakeTailController>().SetMaterial(box.GetComponent<SpriteRenderer>().material);
+        GetComponent<SnakeTailController>().SetAte(true);
     }
 }

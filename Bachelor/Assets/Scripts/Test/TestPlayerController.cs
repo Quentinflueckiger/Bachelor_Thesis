@@ -5,8 +5,9 @@ using UnityEngine.Networking;
 
 public class TestPlayerController : NetworkBehaviour
 {
-    // TODO: Put this variable in a game manager
+    // TODO: Put those variables in a game manager
     public float timeStep = 0.1f;
+    public float speedUpTimer = 2500;
 
     [HideInInspector]
     public Transform bodyHolder;
@@ -14,8 +15,8 @@ public class TestPlayerController : NetworkBehaviour
     private enum directionFacing {Up, Down, Right, Left };
 
     private directionFacing playerDirection;
-
-    // private SnakeTailController stc;
+    private int counter = 1;
+    private SnakeTailController stc;
 
     #region Vector direction definition
     private Vector3 direction = new Vector3(0, 0, 0);
@@ -25,20 +26,20 @@ public class TestPlayerController : NetworkBehaviour
     private Vector3 directionLeft = new Vector3(-1, 0, 0);
     #endregion
 
-    /*private void Awake()
+    private void Awake()
     {
         bodyHolder = new GameObject("Player").transform;
         transform.parent = bodyHolder;
-    }*/
+    }
+
     void Start()
     {
         InvokeRepeating("CmdStepUpdate", 0, timeStep);
-        // stc = GetComponent<SnakeTailController>();
+        stc = GetComponent<SnakeTailController>();
     }
 
     void Update()
-    {
-        
+    {      
         if (Input.GetKeyDown(KeyCode.UpArrow))
             GoUp();
 
@@ -50,23 +51,33 @@ public class TestPlayerController : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             GoLeft();
+
+        // TODO : Either keep it that way, or synchronized it over all the players
+        if (counter % speedUpTimer == 0)
+        {
+            SpeedUp();
+        }
+
+        counter++;
     }
 
+    #region Commands
     [Command]
     public void CmdCancelStepUpdate()
-    {
-        CancelInvoke("CmdStepUpdate");
+    {       
+        CancelInvoke("CmdStepUpdate");       
     }
 
     [Command]
     private void CmdStepUpdate()
     {
-        transform.position += direction;
-        /*  Tail part
-        stc.SetOldPos(transform);
-        stc.MoveTail();
-        */
+        Vector3 pos = transform.position;
+
+        transform.Translate(direction);
+
+        stc.MoveTail(pos, direction, bodyHolder);
     }
+    #endregion
 
     private void SetDirection(Vector3 directionToFace)
     {
@@ -76,6 +87,13 @@ public class TestPlayerController : NetworkBehaviour
     public Vector3 GetDirection()
     {
         return direction;
+    }
+
+    private void SpeedUp()
+    {
+        CmdCancelStepUpdate();
+        timeStep -= 0.01f;
+        InvokeRepeating("CmdStepUpdate", 0, timeStep);
     }
 
     #region Button functions
