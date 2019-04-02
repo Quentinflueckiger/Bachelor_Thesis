@@ -11,9 +11,13 @@ public class IpAdressTag : MonoBehaviour
 
     void Start()
     {
+#if UNITY_EDITOR
         ip = ShowIp.Instance.LocalIPAddress();
 
         ipText.text = ip;
+#else
+        ipText.gameObject.SetActive(false);
+#endif
     }
 
 }

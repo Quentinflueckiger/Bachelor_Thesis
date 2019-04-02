@@ -10,15 +10,20 @@ public class SnakeCollision : MonoBehaviour
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Wall")
         {
             // Only death awaits
+            GetComponent<SnakePlayerController>().CmdCancelStepUpdate();
+            // TODO : Hide on server
             gameObject.SetActive(false);
-            GetComponent<TestPlayerController>().CmdCancelStepUpdate();
+            GetComponent<SnakePlayerController>().CmdDebugLog("Hit with " + other.collider.name);
         }
         else if (other.gameObject.tag == "Tail")
         {
             // TODO : Add code to check the color and steal this part
+            GetComponent<SnakePlayerController>().CmdCancelStepUpdate();
+            //GetComponent<SnakePlayerController>().CmdDebugLog("Material of collided object : " +
+            //                                                    other.gameObject.GetComponent<SpriteRenderer>().material.name);
+            // TODO : Hide on server
             gameObject.SetActive(false);
-            GetComponent<TestPlayerController>().CmdCancelStepUpdate();
-            Debug.Log("Hit tail");
+            GetComponent<SnakePlayerController>().CmdDebugLog("Hit tail");
         }
     }
 

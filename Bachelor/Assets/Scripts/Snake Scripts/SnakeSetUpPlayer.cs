@@ -5,34 +5,40 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class TestSetUpPlayer : NetworkBehaviour
+public class SnakeSetUpPlayer : NetworkBehaviour
 {
     public Text nameTag;
     public string playerName;
     public Vector3 tagOffSet;
 
     public GameObject ctrPanel;
-    private TestPlayerController tpc;
+    private SnakePlayerController spc;
     private GameObject controllerPanel;
+    private GameObject connectPanel;
     private List<UnityAction> actionBtn = new List<UnityAction>();
-
 
     void Start()
     {
-        tpc = GetComponent<TestPlayerController>();
+        spc = GetComponent<SnakePlayerController>();
         controllerPanel = GameObject.Find("ControllerPanel");
+        connectPanel = GameObject.Find("ConnectPanel");
+        //NetworkManagerHUD hud = FindObjectOfType<NetworkManagerHUD>();
 
         if (isLocalPlayer)
         {
-            tpc.enabled = true;
-    
+            spc.enabled = true;
+
+            /*if (hud != null)
+                hud.showGUI = false;
+            */
         }
+
         else
         {
-            tpc.enabled = false;
-            
+            spc.enabled = false;      
         }
-        if(!isServer)           
+
+        if (!isServer)
         {
             if (controllerPanel != null)
                 controllerPanel.SetActive(true);
@@ -40,16 +46,18 @@ public class TestSetUpPlayer : NetworkBehaviour
             ctrPanel = (GameObject)Instantiate(ctrPanel, controllerPanel.transform);
 
             InitActionList();
-            
+
             InitButtonWithFunction(ctrPanel);
-            
+
+            if (connectPanel != null)
+                connectPanel.SetActive(false);
         }
         else
         {
             if (controllerPanel != null)
                 controllerPanel.SetActive(false);
         }
-        
+
         // TODO : Transfert user name from lobby
         Transform canvas = GameObject.Find("PlayerNames").transform;
         nameTag = Instantiate(nameTag, canvas);
@@ -66,10 +74,10 @@ public class TestSetUpPlayer : NetworkBehaviour
 
     private void InitActionList()
     {
-        actionBtn.Add(tpc.GoUp);
-        actionBtn.Add(tpc.GoLeft);
-        actionBtn.Add(tpc.GoRight);
-        actionBtn.Add(tpc.GoDown);
+        actionBtn.Add(spc.GoUp);
+        actionBtn.Add(spc.GoLeft);
+        actionBtn.Add(spc.GoRight);
+        actionBtn.Add(spc.GoDown);
     }
 
     private void InitButtonWithFunction(GameObject panel)
@@ -88,24 +96,9 @@ public class TestSetUpPlayer : NetworkBehaviour
     {
         if (nameTag != null)
         {
-            Destroy(nameTag.gameObject);           
+            Destroy(nameTag.gameObject);
+            Destroy(ctrPanel.gameObject);
         }
     }
-
-    /*
-    void OnGUI()
-    {
-        if (isLocalPlayer)
-        {
-            if (GUI.Button(new Rect(500, 300, 45, 25), "Up"))
-                tpc.GoUp(); ;
-            if (GUI.Button(new Rect(475, 325, 45, 25), "Left"))
-                tpc.GoLeft();
-            if (GUI.Button(new Rect(525, 325, 45, 25), "Right"))
-                tpc.GoRight();
-            if (GUI.Button(new Rect(500, 350, 45, 25), "Down"))
-                tpc.GoDown();
-        }
-    }
-    */
 }
+

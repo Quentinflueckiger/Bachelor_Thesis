@@ -43,12 +43,13 @@ public class SnakeTailController : MonoBehaviour
     public void MoveTail(Vector3 position, Vector3 direction, Transform bodyHolder)
     {
        
-
+        // Add new element to the tail
         if (ate)
         {
+            // TODO : Use object pool
             // Load Prefab into the world
             GameObject g = (GameObject)Instantiate(boxPrefab,
-                                                  position, //+ (-offSet* direction),
+                                                  position,
                                                   Quaternion.identity);
             g.GetComponent<SpriteRenderer>().material = spriteMaterial;
             //g.GetComponent<BoxCollider2D>().enabled = false;
@@ -59,6 +60,8 @@ public class SnakeTailController : MonoBehaviour
 
             // Reset the flag
             ate = false;
+
+            // TODO : find a work around the vector3 == null 
             if (oldPosition == null)
                 oldPosition = position;
         }
@@ -103,9 +106,4 @@ public class SnakeTailController : MonoBehaviour
     {
         return tail;
     }
-    /*
-    public void SetOldPos(Transform head)
-    {
-        oldPosition = head;
-    }*/
 }

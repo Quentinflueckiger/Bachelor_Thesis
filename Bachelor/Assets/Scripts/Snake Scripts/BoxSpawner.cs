@@ -37,8 +37,8 @@ public class BoxSpawner : NetworkBehaviour
     private void SpawnBox()
     {
         // TODO : Create a pool of boxes to use instead of destroying and creating new each time
-        // TODO :  Update : DONE
-        //         Check that the spawnPosition is empty before spawning the new box 
+        // TODO : Update : DONE
+        //        Check that the spawnPosition is empty before spawning the new box 
         
         Vector3 spawnPosition = new Vector3(Random.Range(-halfWidth, halfWidth), 
                                             Random.Range(-halfHeight, halfHeight),

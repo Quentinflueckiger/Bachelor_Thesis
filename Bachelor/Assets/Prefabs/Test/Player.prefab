@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9f039ebfbd87341abdc7653384fd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeStep: 0.05
-  speedUpTimer: 2500
+  timeStep: 0.08
+  speedUpTimer: 500
   bodyHolder: {fileID: 0}
 --- !u!114 &26
 MonoBehaviour:
@@ -164,8 +164,7 @@ MonoBehaviour:
   nameTag: {fileID: 6840296079628370786, guid: 38ec265aca85453469cacb6cdba5cd33, type: 3}
   playerName: Player Name
   tagOffSet: {x: 0, y: 3.5, z: 0}
-  ctrPanel: {fileID: 2696786389347553677, guid: 68cd7e7c655091447a6c2608fa0213eb,
-    type: 3}
+  ctrPanel: {fileID: 23, guid: 68cd7e7c655091447a6c2608fa0213eb, type: 3}
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 0

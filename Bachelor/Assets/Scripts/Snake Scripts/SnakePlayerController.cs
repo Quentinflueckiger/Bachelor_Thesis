@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class TestPlayerController : NetworkBehaviour
+public class SnakePlayerController : NetworkBehaviour
 {
     // TODO: Put those variables in a game manager
     public float timeStep = 0.1f;
@@ -53,10 +53,12 @@ public class TestPlayerController : NetworkBehaviour
             GoLeft();
 
         // TODO : Either keep it that way, or synchronized it over all the players
-        if (counter % speedUpTimer == 0)
+        // Had to take away, it was causing the tail to leave the snake
+        /*
+        if (counter % speedUpTimer == 0 && timeStep > 0.04f)
         {
             SpeedUp();
-        }
+        }*/
 
         counter++;
     }
@@ -65,7 +67,8 @@ public class TestPlayerController : NetworkBehaviour
     [Command]
     public void CmdCancelStepUpdate()
     {       
-        CancelInvoke("CmdStepUpdate");       
+        CancelInvoke("CmdStepUpdate");
+        Debug.Log("Canceled : CmdCancelStepUpdate");
     }
 
     [Command]
@@ -76,6 +79,12 @@ public class TestPlayerController : NetworkBehaviour
         transform.Translate(direction);
 
         stc.MoveTail(pos, direction, bodyHolder);
+    }
+
+    [Command]
+    public void CmdDebugLog(string s)
+    {
+        Debug.Log(s);
     }
     #endregion
 
@@ -94,6 +103,7 @@ public class TestPlayerController : NetworkBehaviour
         CmdCancelStepUpdate();
         timeStep -= 0.01f;
         InvokeRepeating("CmdStepUpdate", 0, timeStep);
+        CmdDebugLog("Speed up to : "+ timeStep);
     }
 
     #region Button functions
