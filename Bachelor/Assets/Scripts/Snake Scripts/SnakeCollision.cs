@@ -10,9 +10,9 @@ public class SnakeCollision : MonoBehaviour
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Wall")
         {
             // Only death awaits
-            GetComponent<SnakePlayerController>().CmdCancelStepUpdate();
+            GetComponent<SnakePlayerController>().CancelStepUpdate();
             // TODO : Hide on server
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
             GetComponent<SnakePlayerController>().CmdDebugLog("Hit with " + other.collider.name);
         }
         else if (other.gameObject.tag == "Tail")

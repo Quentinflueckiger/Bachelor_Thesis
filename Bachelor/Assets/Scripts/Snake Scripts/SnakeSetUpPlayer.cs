@@ -97,7 +97,11 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         if (nameTag != null)
         {
             Destroy(nameTag.gameObject);
-            Destroy(ctrPanel.gameObject);
+            Destroy(ctrPanel.gameObject);       // Problem
+            /*  
+             *  Destroying assets is not permitted to avoid data loss.
+             *  If you really want to remove an asset use DestroyImmediate (theObject, true);
+            */
         }
     }
 }

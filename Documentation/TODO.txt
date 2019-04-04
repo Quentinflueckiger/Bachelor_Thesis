@@ -3,12 +3,13 @@
 - custom button to start server					DONE
 - hide base manager hud 					DONE
 - scale buttons							DONE
-- Handle disconnect better
+- Fix tail staying behind after speed up ClientRPC / syncvar !!	Done	(Method weren't called at the right place)
+- Problem with multiple controller -> Coming from the BUTTONS -> Have to look in the assignment of method
+- Commenting code
 - Fix when collision / name tag / respawn ?
-- Fix tail staying behind after speed up
 - object pool for spawn boxes and tail elements
 - add random color to controller (color of bonuses)
-- add random color to snake on connect
+- add random color to snake on connect				
 - End of game (Game manager ?) 
 - Create Lobby !!!!!!!!!!
 - Add User name (Lobby)

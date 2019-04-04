@@ -34,7 +34,8 @@ public class TestNetworkHudController : MonoBehaviour
     {
         if (this.IsServerStarted())
             this.manager.StopHost();
-        Debug.Log("Server not started");
+        else
+            Debug.Log("Server not started");
     }
 
     public bool IsServerStarted()

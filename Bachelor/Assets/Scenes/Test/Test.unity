@@ -594,7 +594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &479406275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 489616520}
   - component: {fileID: 489616519}
   - component: {fileID: 489616523}
+  - component: {fileID: 489616522}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -771,7 +772,7 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 5571655792297654746, guid: 0d45713d4faa3a14fbb0f93d335c0705, type: 3}
-  m_CustomConfig: 0
+  m_CustomConfig: 1
   m_MaxConnections: 4
   m_ConnectionConfig:
     m_PacketSize: 1440
@@ -813,7 +814,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 
+  m_Channels: 0500000000000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
@@ -841,6 +842,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &489616522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489616518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7844ac7abb6987540a1d2894940e1275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  timeStep: 0.1
+  speedUpTimer: 500
 --- !u!114 &489616523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,6 +1458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: showGUI
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279586211378217814, guid: fe2f79375fa1dc54db9fd8b5663ccb96,
+        type: 3}
+      propertyPath: matchSize
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4279586211378217808, guid: fe2f79375fa1dc54db9fd8b5663ccb96,
         type: 3}

@@ -5,9 +5,10 @@ using UnityEngine.Networking;
 
 public class SnakePlayerController : NetworkBehaviour
 {
-    // TODO: Put those variables in a game manager
-    public float timeStep = 0.1f;
-    public float speedUpTimer = 2500;
+    // TODO: Done
+    //       Put those variables in a game manager
+    private float timeStep = 0f;
+    private float speedUpTimer = 2500f;
 
     [HideInInspector]
     public Transform bodyHolder;
@@ -17,6 +18,7 @@ public class SnakePlayerController : NetworkBehaviour
     private directionFacing playerDirection;
     private int counter = 1;
     private SnakeTailController stc;
+    TestGameManager tgm;
 
     #region Vector direction definition
     private Vector3 direction = new Vector3(0, 0, 0);
@@ -30,10 +32,21 @@ public class SnakePlayerController : NetworkBehaviour
     {
         bodyHolder = new GameObject("Player").transform;
         transform.parent = bodyHolder;
+        tgm = TestGameManager.Instance;
     }
 
     void Start()
     {
+        if (tgm != null)
+        {
+            timeStep = tgm.GetTimeStep();
+            speedUpTimer = tgm.GetSpeedUpTimer();
+        }
+        else
+            Debug.Log("Failed to retrieve t game manager");
+            //CmdDebugLog("FAILED TO RETRIEVE T Game Manager.");
+
+        CmdDebugLog("TimeStep " + timeStep);
         InvokeRepeating("CmdStepUpdate", 0, timeStep);
         stc = GetComponent<SnakeTailController>();
     }
@@ -54,13 +67,20 @@ public class SnakePlayerController : NetworkBehaviour
 
         // TODO : Either keep it that way, or synchronized it over all the players
         // Had to take away, it was causing the tail to leave the snake
-        /*
+        
+        
         if (counter % speedUpTimer == 0 && timeStep > 0.04f)
         {
             SpeedUp();
-        }*/
+        }
 
         counter++;
+    }
+
+    public void CancelStepUpdate()
+    {
+        CancelInvoke("CmdStepUpdate");
+        Debug.Log("Canceled : CancelStepUpdate");
     }
 
     #region Commands
@@ -88,6 +108,14 @@ public class SnakePlayerController : NetworkBehaviour
     }
     #endregion
 
+    private void SpeedUp()
+    {
+        CancelStepUpdate();
+        timeStep -= 0.01f;
+        InvokeRepeating("CmdStepUpdate", 0, timeStep);
+        CmdDebugLog("Speed up to : "+ timeStep);
+    }
+
     private void SetDirection(Vector3 directionToFace)
     {
         direction = directionToFace;
@@ -96,14 +124,6 @@ public class SnakePlayerController : NetworkBehaviour
     public Vector3 GetDirection()
     {
         return direction;
-    }
-
-    private void SpeedUp()
-    {
-        CmdCancelStepUpdate();
-        timeStep -= 0.01f;
-        InvokeRepeating("CmdStepUpdate", 0, timeStep);
-        CmdDebugLog("Speed up to : "+ timeStep);
     }
 
     #region Button functions

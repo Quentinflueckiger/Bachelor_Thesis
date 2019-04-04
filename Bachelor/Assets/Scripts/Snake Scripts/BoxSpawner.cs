@@ -5,14 +5,13 @@ using UnityEngine.Networking;
 
 public class BoxSpawner : NetworkBehaviour
 {
-
-    public int maxBoxes = 10;
-    public int spawnInterval = 5;
-
     public GameObject box;
     public Material[] spriteMaterial;
 
     // TODO: Put those variables in a game manager
+    public int maxBoxes = 10;
+    public int spawnInterval = 5;
+
     public int offSetSize;
     private int halfWidth = 81;
     private int halfHeight = 43;      
