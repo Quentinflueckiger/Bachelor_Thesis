@@ -765,7 +765,7 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 10, guid: 5a523d78428903b45a3bdae3100be193, type: 3}
+  m_PlayerPrefab: {fileID: 10, guid: c157a8943ccca634693becfd229e2b61, type: 3}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 1
   m_OfflineScene: 
@@ -856,7 +856,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   timeStep: 0.1
-  speedUpTimer: 500
+  speedUpTimer: 2500
+  maxBoxes: 10
+  boxSpawnInterval: 5
+  borderOffSetSize: 3
 --- !u!114 &489616523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,8 +950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2157aa84d4b3d24d8888123e08a231f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBoxes: 10
-  spawnInterval: 5
   box: {fileID: 5571655792297654746, guid: 0d45713d4faa3a14fbb0f93d335c0705, type: 3}
   spriteMaterial:
   - {fileID: 2100000, guid: 7e0f802b2ebb2cd4fb87ba2786896502, type: 2}
@@ -959,7 +960,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5427a5939d681e24e9fd18694b815373, type: 2}
   - {fileID: 2100000, guid: 3b0296866a5602246ab05227e413a453, type: 2}
   - {fileID: 2100000, guid: 0276a284e1a64de4a8791028e854adba, type: 2}
-  offSetSize: 3
 --- !u!1001 &648657459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1719,6 +1719,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 477831376}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 802371250}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

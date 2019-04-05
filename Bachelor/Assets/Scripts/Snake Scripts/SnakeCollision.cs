@@ -19,8 +19,7 @@ public class SnakeCollision : MonoBehaviour
         {
             // TODO : Add code to check the color and steal this part
             GetComponent<SnakePlayerController>().CmdCancelStepUpdate();
-            //GetComponent<SnakePlayerController>().CmdDebugLog("Material of collided object : " +
-            //                                                    other.gameObject.GetComponent<SpriteRenderer>().material.name);
+            
             // TODO : Hide on server
             gameObject.SetActive(false);
             GetComponent<SnakePlayerController>().CmdDebugLog("Hit tail");
@@ -41,8 +40,9 @@ public class SnakeCollision : MonoBehaviour
 
     private void AddBoxToSnake(GameObject box)
     {
-        // TODO : Done : Add box to tail of snake
-        //               Use box to send color
+        // Done  
+        //      Add box to tail of snake
+        //      Use box to send color
         GetComponent<SnakeTailController>().SetMaterial(box.GetComponent<SpriteRenderer>().material);
         GetComponent<SnakeTailController>().SetAte(true);
     }

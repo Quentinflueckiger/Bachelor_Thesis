@@ -5,10 +5,10 @@ using UnityEngine.Networking;
 
 public class SnakePlayerController : NetworkBehaviour
 {
-    // TODO: Done
+    // Done
     //       Put those variables in a game manager
-    private float timeStep = 0f;
-    private float speedUpTimer = 2500f;
+    private float timeStep; // = 0f;
+    private float speedUpTimer; // = 2500f;
 
     [HideInInspector]
     public Transform bodyHolder;
@@ -129,6 +129,8 @@ public class SnakePlayerController : NetworkBehaviour
     #region Button functions
     public void GoUp()
     {
+        if (!isLocalPlayer)
+            return;
         if (playerDirection != directionFacing.Down)
         {
             playerDirection = directionFacing.Up;
@@ -138,6 +140,8 @@ public class SnakePlayerController : NetworkBehaviour
     }
     public void GoDown()
     {
+        if (!isLocalPlayer)
+            return;
         if (playerDirection != directionFacing.Up)
         {
             playerDirection = directionFacing.Down;
@@ -146,6 +150,8 @@ public class SnakePlayerController : NetworkBehaviour
     }
     public void GoRight()
     {
+        if (!isLocalPlayer)
+            return;
         if (playerDirection != directionFacing.Left)
         {
             playerDirection = directionFacing.Right;
@@ -154,6 +160,8 @@ public class SnakePlayerController : NetworkBehaviour
     }
     public void GoLeft()
     {
+        if (!isLocalPlayer)
+            return;
         if (playerDirection != directionFacing.Right)
         {
             playerDirection = directionFacing.Left;

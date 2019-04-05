@@ -18,7 +18,7 @@ public class SnakeUIHandler : MonoBehaviour
         startServerPanel = GameObject.Find("ServerPanel");
         startServerBtn = GameObject.Find("StartServerBtn");
         stopServerBtn = GameObject.Find("StopServerBtn");
-
+        
         // Checks plateform before runtime
         // If it's a standalone version or in the editor it means it is the server
         // UNITY_STANDALONE ||

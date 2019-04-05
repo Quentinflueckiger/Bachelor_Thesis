@@ -5,40 +5,16 @@ using System.Linq;
 
 public class SnakeTailController : MonoBehaviour
 {
-    //public int offSet = 1;
+    // The prefab to be instanciated as tail element
     public GameObject boxPrefab;
-    //public GameObject tailHolder;
+    // List which stores transform of all tail element
     private List<Transform> tail = new List<Transform>();
-    //private Transform tailPosition;
-    //public GameObject newTailObject;
-    //private Transform oldPosition;
+    // Used as flag to notice when the snake eats a box
     private bool ate;
+    // The material of the tail element to be spawned
     private Material spriteMaterial;
-    //private int counter = 0;
+    // The position of the last spawned element
     private Vector3 oldPosition;
-
-    void Start()
-    {
-        //oldPosition = transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //transform.position = newTailObject.transform.position;
-    }
-
-    // TODO : Add parameter color, the color of the box which will be used later for improved gameplay
-    // TODO : Fix spawn problem with the collider, as the object is created within
-    //        an other gameobjec which has a collider it automatically uses it.
-    /*public void AddToTail()
-    {
-        if (tailPosition == null)
-            tailPosition = oldPosition;
-        newTailObject = Instantiate(boxPrefab, tailPosition.position, Quaternion.identity, tailHolder.transform);  
-        tailPosition = newTailObject.transform;
-        
-    }*/
 
     public void MoveTail(Vector3 position, Vector3 direction, Transform bodyHolder)
     {
@@ -47,16 +23,15 @@ public class SnakeTailController : MonoBehaviour
         if (ate)
         {
             // TODO : Use object pool
-            // Load Prefab into the world
-            GameObject g = (GameObject)Instantiate(boxPrefab,
+            // Load Prefab into the world, set it's material and parent
+            GameObject box = (GameObject)Instantiate(boxPrefab,
                                                   position,
                                                   Quaternion.identity);
-            g.GetComponent<SpriteRenderer>().material = spriteMaterial;
-            //g.GetComponent<BoxCollider2D>().enabled = false;
-            g.transform.SetParent(bodyHolder);
+            box.GetComponent<SpriteRenderer>().material = spriteMaterial;
+            box.transform.SetParent(bodyHolder);
 
             // Keep track of it in our tail list
-            tail.Insert(0, g.transform);
+            tail.Insert(0, box.transform);
 
             // Reset the flag
             ate = false;
@@ -65,15 +40,6 @@ public class SnakeTailController : MonoBehaviour
             if (oldPosition == null)
                 oldPosition = position;
         }
-
-        /*else if (tail.Count > 0 && counter % 3 == 0)
-        {
-            tail.Last().position = position;
-
-            tail.Insert(0, tail.Last());
-            tail.RemoveAt(tail.Count - 1);
-        }
-        counter++;*/
 
         float distanceMoved = Vector3.Distance(position, oldPosition);
 
@@ -106,4 +72,25 @@ public class SnakeTailController : MonoBehaviour
     {
         return tail;
     }
+    #region Deprecated
+    // Add parameter color, the color of the box which will be used later for improved gameplay
+    // Fix spawn problem with the collider, as the object is created within
+    //        an other gameobjec which has a collider it automatically uses it.
+    /*public void AddToTail()
+    {
+        if (tailPosition == null)
+            tailPosition = oldPosition;
+        newTailObject = Instantiate(boxPrefab, tailPosition.position, Quaternion.identity, tailHolder.transform);  
+        tailPosition = newTailObject.transform;
+        
+    }*/
+     /*else if (tail.Count > 0 && counter % 3 == 0)
+        {
+            tail.Last().position = position;
+
+            tail.Insert(0, tail.Last());
+            tail.RemoveAt(tail.Count - 1);
+        }
+        counter++;*/
+    #endregion
 }

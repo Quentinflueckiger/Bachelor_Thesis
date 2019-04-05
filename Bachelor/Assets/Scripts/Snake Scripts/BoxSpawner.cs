@@ -9,20 +9,28 @@ public class BoxSpawner : NetworkBehaviour
     public Material[] spriteMaterial;
 
     // TODO: Put those variables in a game manager
-    public int maxBoxes = 10;
-    public int spawnInterval = 5;
+    private int maxBoxes;
+    private int spawnInterval;
 
-    public int offSetSize;
-    private int halfWidth = 81;
-    private int halfHeight = 43;      
+    private int halfWidth;
+    private int halfHeight; 
+
+    TestGameManager tgm;     
 
     public override void OnStartServer()
     {
+        tgm = TestGameManager.Instance;
+
+        if (tgm == null)
+        {
+            Debug.Log("Couldn't find Game Manager");
+            return;
+        }
+        maxBoxes = tgm.GetMaxBoxes();
+        spawnInterval = tgm.GetBoxSpawnInterval();
+        halfWidth = tgm.GetX();
+        halfHeight = tgm.GetY();
         InvokeRepeating("SpawnBoxes", 0, spawnInterval);
-        halfWidth -= offSetSize;
-        halfHeight -= offSetSize;
-        //halfWidth = GameManager.x;
-        //halfHeight = GameManager.y;
     }
 
     private void SpawnBoxes()
@@ -36,7 +44,7 @@ public class BoxSpawner : NetworkBehaviour
     private void SpawnBox()
     {
         // TODO : Create a pool of boxes to use instead of destroying and creating new each time
-        // TODO : Update : DONE
+        // DONE
         //        Check that the spawnPosition is empty before spawning the new box 
         
         Vector3 spawnPosition = new Vector3(Random.Range(-halfWidth, halfWidth), 
