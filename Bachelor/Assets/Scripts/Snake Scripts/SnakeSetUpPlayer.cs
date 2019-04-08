@@ -12,6 +12,7 @@ public class SnakeSetUpPlayer : NetworkBehaviour
     //public GameObject ctrPanel;
     private SnakePlayerController spc;
     private GameObject controllerPanel;
+    private GameObject controllerHolder;
     //private GameObject controller;
     //private GameObject connectPanel;
     //private List<UnityAction> actionBtn = new List<UnityAction>();
@@ -21,7 +22,8 @@ public class SnakeSetUpPlayer : NetworkBehaviour
     {
         spc = GetComponent<SnakePlayerController>();
         controllerPanel = GameObject.Find("ControllerPanel");
-        
+        controllerHolder = GameObject.Find("ControllerHolder");
+
         sgm = SnakeGameManager.Instance;
         if (sgm == null)
             Debug.Log("Failed to retrieve game manager.");
@@ -43,6 +45,7 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         { 
             if (controllerPanel != null)
                 controllerPanel.SetActive(false);
+            controller.gameObject.SetActive(false);
         }
 
         // TODO : Transfert user name from lobby
@@ -53,7 +56,7 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         nameTag.text = playerName;
 
         // Parent the controller to the Controller object which is a child of the main canvas
-        controller.transform.SetParent(controllerPanel.transform);
+        controller.transform.SetParent(controllerHolder.transform);
         controller.transform.position.Set(0, 0, 0);
 
     }
