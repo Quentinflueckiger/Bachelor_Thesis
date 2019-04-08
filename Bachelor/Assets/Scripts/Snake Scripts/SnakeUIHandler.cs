@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class SnakeUIHandler : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SnakeUIHandler : MonoBehaviour
     private GameObject startServerPanel;
     private GameObject startServerBtn;
     private GameObject stopServerBtn;
+    private GameObject timerText;
     private TestNetworkHudController tnhc;
 
     void Start()
@@ -18,7 +20,10 @@ public class SnakeUIHandler : MonoBehaviour
         startServerPanel = GameObject.Find("ServerPanel");
         startServerBtn = GameObject.Find("StartServerBtn");
         stopServerBtn = GameObject.Find("StopServerBtn");
-        
+        timerText = GameObject.Find("GameTimer");
+
+        NetworkManagerHUD hud = FindObjectOfType<NetworkManagerHUD>();
+
         // Checks plateform before runtime
         // If it's a standalone version or in the editor it means it is the server
         // UNITY_STANDALONE ||
@@ -26,12 +31,17 @@ public class SnakeUIHandler : MonoBehaviour
         connectPanel.SetActive(false);
         startServerPanel.SetActive(true);
         stopServerBtn.SetActive(false);
+        timerText.SetActive(true);
 
         // Otherwise it is the client
 #else
         connectPanel.SetActive(true);
         startServerPanel.SetActive(false);
+        timerText.SetActive(false);
 #endif
+
+        if (hud != null)
+            hud.showGUI = false;
     }
 
     // TODO : Check if connection succeed

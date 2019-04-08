@@ -11,30 +11,41 @@ public class BoxSpawner : NetworkBehaviour
     // TODO: Put those variables in a game manager
     private int maxBoxes;
     private int spawnInterval;
+    private bool isSpawning = false;
 
     private int halfWidth;
-    private int halfHeight; 
+    private int halfHeight;
 
-    TestGameManager tgm;     
+    SnakeGameManager sgm;     
 
     public override void OnStartServer()
     {
-        tgm = TestGameManager.Instance;
+        sgm = SnakeGameManager.Instance;
 
-        if (tgm == null)
+        if (sgm == null)
         {
             Debug.Log("Couldn't find Game Manager");
             return;
         }
-        maxBoxes = tgm.GetMaxBoxes();
-        spawnInterval = tgm.GetBoxSpawnInterval();
-        halfWidth = tgm.GetX();
-        halfHeight = tgm.GetY();
-        InvokeRepeating("SpawnBoxes", 0, spawnInterval);
+        maxBoxes = sgm.GetMaxBoxes();
+        spawnInterval = sgm.GetBoxSpawnInterval();
+        halfWidth = sgm.GetX();
+        halfHeight = sgm.GetY();
+        //InvokeRepeating("SpawnBoxes", 0, spawnInterval);
+    }
+
+    public void Update()
+    {
+        // Check if the game is running with the game manager
+        if (sgm.GetGameStatus() && !isSpawning)
+            InvokeRepeating("SpawnBoxes", 0, spawnInterval);
+        if (!sgm.GetGameStatus() && isSpawning)
+            CancelInvoke("SpawnBoxes");
     }
 
     private void SpawnBoxes()
     {
+        isSpawning = true;
         for (int i = 0; i < maxBoxes - GetCurrentAmountOfBoxes(); i++)
         {
             SpawnBox();

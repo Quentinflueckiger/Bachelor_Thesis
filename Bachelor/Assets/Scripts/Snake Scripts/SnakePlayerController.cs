@@ -18,7 +18,7 @@ public class SnakePlayerController : NetworkBehaviour
     private directionFacing playerDirection;
     private int counter = 1;
     private SnakeTailController stc;
-    TestGameManager tgm;
+    SnakeGameManager sgm;
 
     #region Vector direction definition
     private Vector3 direction = new Vector3(0, 0, 0);
@@ -32,19 +32,19 @@ public class SnakePlayerController : NetworkBehaviour
     {
         bodyHolder = new GameObject("Player").transform;
         transform.parent = bodyHolder;
-        tgm = TestGameManager.Instance;
+        sgm = SnakeGameManager.Instance;
     }
 
     void Start()
     {
-        if (tgm != null)
+        if (sgm != null)
         {
-            timeStep = tgm.GetTimeStep();
-            speedUpTimer = tgm.GetSpeedUpTimer();
+            timeStep = sgm.GetTimeStep();
+            speedUpTimer = sgm.GetSpeedUpTimer();
+            sgm.AddPlayer(this.gameObject);
         }
         else
             Debug.Log("Failed to retrieve t game manager");
-            //CmdDebugLog("FAILED TO RETRIEVE T Game Manager.");
 
         CmdDebugLog("TimeStep " + timeStep);
         InvokeRepeating("CmdStepUpdate", 0, timeStep);
@@ -66,9 +66,8 @@ public class SnakePlayerController : NetworkBehaviour
             GoLeft();
 
         // TODO : Either keep it that way, or synchronized it over all the players
-        // Had to take away, it was causing the tail to leave the snake
-        
-        
+        // Had to take it away, as it was causing the tail to leave the snake (Corrected)
+            
         if (counter % speedUpTimer == 0 && timeStep > 0.04f)
         {
             SpeedUp();
@@ -106,6 +105,22 @@ public class SnakePlayerController : NetworkBehaviour
     {
         Debug.Log(s);
     }
+
+    [Command]
+    public void CmdOnDeath(string name)
+    {
+        CancelStepUpdate();
+        this.gameObject.SetActive(false);
+        sgm.RemovePlayer(this.gameObject);
+        Debug.Log("Collision with: " + name);
+    }
+    [Command]
+    public void CmdOnEndGame()
+    {
+        CancelStepUpdate();
+        this.gameObject.SetActive(false);
+    }
+
     #endregion
 
     private void SpeedUp()

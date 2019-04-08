@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityEngine.Events;
 
 public class SnakeSetUpPlayer : NetworkBehaviour
 {
@@ -18,21 +15,23 @@ public class SnakeSetUpPlayer : NetworkBehaviour
     //private GameObject controller;
     //private GameObject connectPanel;
     //private List<UnityAction> actionBtn = new List<UnityAction>();
+    private SnakeGameManager sgm;
 
     void Start()
     {
         spc = GetComponent<SnakePlayerController>();
         controllerPanel = GameObject.Find("ControllerPanel");
-        //NetworkManagerHUD hud = FindObjectOfType<NetworkManagerHUD>();
+        
+        sgm = SnakeGameManager.Instance;
+        if (sgm == null)
+            Debug.Log("Failed to retrieve game manager.");
 
         // Enable the player controller script if it is the local player
         if (isLocalPlayer)
         {
             spc.enabled = true;
             controller.SetActive(true);
-            /*if (hud != null)
-                hud.showGUI = false;
-            */
+            
         }
 
         else
@@ -72,6 +71,8 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         {
             Destroy(nameTag.gameObject);
             controller.SetActive(false);
+            sgm.Remove(this.gameObject);
+            Destroy(transform.parent.gameObject);
             //Destroy(ctrPanel.gameObject);       // Problem
             /*  
              *  Destroying assets is not permitted to avoid data loss.

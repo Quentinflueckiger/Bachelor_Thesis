@@ -5,12 +5,13 @@
 - scale buttons							DONE
 - Fix tail staying behind after speed up ClientRPC / syncvar !!	DONE	(Method weren't called at the right place)
 - Problem with multiple controller -> Coming from the BUTTONS -> Have to look in the assignment of method DONE (It was the assignement of the method which was the problem, solved by adding the controller to the player and spawn it at the same time)
+- End of game Game manager 					DONE
+- Score board
 - Commenting code
 - Fix when collision / name tag / respawn ?
 - object pool for spawn boxes and tail elements
 - add random color to controller (color of bonuses)
 - Create Lobby !!!!!!!!!!
+- add random color to snake on connect		
 - Add User name (Lobby)
-
-- add random color to snake on connect				
-- End of game Game manager !!!!!
+					

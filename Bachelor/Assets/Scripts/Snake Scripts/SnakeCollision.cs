@@ -5,24 +5,35 @@ using UnityEngine;
 public class SnakeCollision : MonoBehaviour
 {
 
+    private SnakePlayerController spc;
+
+    private void Awake()
+    {
+        spc = GetComponent<SnakePlayerController>();
+    }
+    private void Start()
+    {
+        if (spc == null)
+            Debug.Log("Failed to retrieve SnakePlayerController");
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player" || other.gameObject.tag == "Wall")
         {
             // Only death awaits
-            GetComponent<SnakePlayerController>().CancelStepUpdate();
-            // TODO : Hide on server
-            this.gameObject.SetActive(false);
-            GetComponent<SnakePlayerController>().CmdDebugLog("Hit with " + other.collider.name);
+            if (spc != null)
+                spc.CmdOnDeath(other.collider.name);
+            else
+                Debug.Log("SnakePlayerController not assigned");
         }
         else if (other.gameObject.tag == "Tail")
         {
             // TODO : Add code to check the color and steal this part
-            GetComponent<SnakePlayerController>().CmdCancelStepUpdate();
-            
-            // TODO : Hide on server
-            gameObject.SetActive(false);
-            GetComponent<SnakePlayerController>().CmdDebugLog("Hit tail");
+            if (spc != null)
+                spc.CmdOnDeath(other.collider.name);
+            else
+                Debug.Log("SnakePlayerController not assigned");
         }
     }
 
