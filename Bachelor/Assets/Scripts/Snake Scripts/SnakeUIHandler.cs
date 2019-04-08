@@ -26,7 +26,7 @@ public class SnakeUIHandler : MonoBehaviour
 
         // Checks plateform before runtime
         // If it's a standalone version or in the editor it means it is the server
-#if UNITY_EDITOR //|| UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE
         connectPanel.SetActive(false);
         startServerPanel.SetActive(true);
         stopServerBtn.SetActive(false);
