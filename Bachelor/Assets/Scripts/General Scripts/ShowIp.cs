@@ -19,7 +19,6 @@ public class ShowIp : MonoBehaviour
     private void Start()
     {
         string ipAdress = LocalIPAddress();
-        Debug.Log("Ip adress :" + ipAdress);
     }
 
     public string LocalIPAddress()

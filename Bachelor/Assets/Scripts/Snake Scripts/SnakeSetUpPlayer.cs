@@ -65,6 +65,11 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         nameTag.transform.position = newPosition;
     }
 
+    public string GetPlayerName()
+    {
+        return playerName;
+    }
+
     public void OnDestroy()
     {
         if (nameTag != null)

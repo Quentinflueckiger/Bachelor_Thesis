@@ -11,11 +11,11 @@ public class SnakeUIHandler : MonoBehaviour
     private GameObject startServerBtn;
     private GameObject stopServerBtn;
     private GameObject timerText;
-    private TestNetworkHudController tnhc;
+    private SnakeNetworkHudController snhc;
 
     void Start()
     {
-        tnhc = TestNetworkHudController.Instance;
+        snhc = SnakeNetworkHudController.Instance;
         connectPanel = GameObject.Find("ConnectPanel");
         startServerPanel = GameObject.Find("ServerPanel");
         startServerBtn = GameObject.Find("StartServerBtn");
@@ -26,8 +26,8 @@ public class SnakeUIHandler : MonoBehaviour
 
         // Checks plateform before runtime
         // If it's a standalone version or in the editor it means it is the server
-        // UNITY_STANDALONE ||
-#if UNITY_EDITOR
+        // TODO : UNITY_STANDALONE ||
+#if UNITY_EDITOR || UNITY_STANDALONE
         connectPanel.SetActive(false);
         startServerPanel.SetActive(true);
         stopServerBtn.SetActive(false);
@@ -47,13 +47,13 @@ public class SnakeUIHandler : MonoBehaviour
     // TODO : Check if connection succeed
     public void OnConnectBtnPressed(Text ip)
     {
-        tnhc.ConnectTo(ip);
+        snhc.ConnectTo(ip);
     }
 
     public void OnStartServerPressed()
     {
-        tnhc.StartServer();
-        if (tnhc.IsServerStarted())
+        snhc.StartServer();
+        if (snhc.IsServerStarted())
         {
             startServerBtn.SetActive(false);
             stopServerBtn.SetActive(true);
@@ -64,8 +64,8 @@ public class SnakeUIHandler : MonoBehaviour
 
     public void OnStopServerPressed()
     {
-        tnhc.StopServer();
-        if (!tnhc.IsServerStarted())
+        snhc.StopServer();
+        if (!snhc.IsServerStarted())
         {
             stopServerBtn.SetActive(false);
             startServerBtn.SetActive(true);

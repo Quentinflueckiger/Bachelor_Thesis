@@ -123,6 +123,11 @@ public class SnakePlayerController : NetworkBehaviour
 
     #endregion
 
+    public void OnEndGame()
+    {
+        CancelStepUpdate();
+        this.gameObject.SetActive(false);
+    }
     private void SpeedUp()
     {
         CancelStepUpdate();

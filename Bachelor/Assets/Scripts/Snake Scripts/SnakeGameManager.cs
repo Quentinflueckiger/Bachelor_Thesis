@@ -22,6 +22,9 @@ public class SnakeGameManager : MonoBehaviour
     public int boxSpawnInterval = 5;
     public int borderOffSetSize = 3;
 
+    [SerializeField]
+    GameObject scoreboard;
+
     private int halfWidth = 81;
     private int halfHeight = 43;
     private bool gameOver = false;
@@ -130,6 +133,10 @@ public class SnakeGameManager : MonoBehaviour
         // TODO : Add what happens when the game is ended due to lack of skill of the players
 
         // Show score board
+        // TODO : UNITY_STANDALONE
+#if UNITY_EDITOR ||UNITY_STANDALONE
+        scoreboard.SetActive(true);
+#endif
     }
 
     private void EndGame()
@@ -143,10 +150,14 @@ public class SnakeGameManager : MonoBehaviour
         foreach (GameObject player in playersAlive)
         {
             player.GetComponent<SnakePlayerController>().CmdOnEndGame();
+            player.GetComponent<SnakePlayerController>().OnEndGame();
         }
-
         // Show score board
-        
+        // TODO : UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE
+        scoreboard.SetActive(true);
+#endif
+
     }
 
     private void Count()
@@ -178,5 +189,15 @@ public class SnakeGameManager : MonoBehaviour
     public bool GetGameStatus()
     {
         return gameStart;
+    }
+
+    public GameObject[] GetPlayers()
+    {
+        return players.ToArray();
+    }
+
+    public List<GameObject> GetPlayersList()
+    {
+        return players;
     }
 }

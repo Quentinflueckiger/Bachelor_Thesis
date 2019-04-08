@@ -5,13 +5,13 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(NetworkManager))]
-public class TestNetworkHudController : MonoBehaviour
+public class SnakeNetworkHudController : MonoBehaviour
 {
     [HideInInspector]
     public NetworkManager manager;
 
     // Used as singleton
-    public static TestNetworkHudController Instance;
+    public static SnakeNetworkHudController Instance;
 
     void Awake()
     {
