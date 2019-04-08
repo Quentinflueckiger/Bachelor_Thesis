@@ -65,6 +65,11 @@ public class SnakePlayerController : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             GoLeft();
 
+        if (Input.GetButtonDown("UpBtn"))
+            GoUp();
+        if (Input.GetButtonDown("RightBtn"))
+            GoRight();
+
         // TODO : Either keep it that way, or synchronized it over all the players
         // Had to take it away, as it was causing the tail to leave the snake (Corrected)
             

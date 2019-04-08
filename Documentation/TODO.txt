@@ -1,12 +1,14 @@
-- overrid networkmanagerhud to connect with button 		DONE~
-- Hide connect button when not client and when connected	DONE
-- custom button to start server					DONE
-- hide base manager hud 					DONE
-- scale buttons							DONE
-- Fix tail staying behind after speed up ClientRPC / syncvar !!	DONE	(Method weren't called at the right place)
+- overrid networkmanagerhud to connect with button 				DONE~
+- Hide connect button when not client and when connected			DONE
+- custom button to start server							DONE
+- hide base manager hud 							DONE
+- scale buttons									DONE
+- Fix tail staying behind after speed up ClientRPC / syncvar !!			DONE	(Method weren't called at the right place)
 - Problem with multiple controller -> Coming from the BUTTONS -> Have to look in the assignment of method DONE (It was the assignement of the method which was the problem, solved by adding the controller to the player and spawn it at the same time)
-- End of game Game manager 					DONE
-- Score board							DONE 
+- End of game Game manager 							DONE
+- Score board									DONE
+- Controller issue (fixed first problem, with localscaling on the canvase) 	DONE
+- Second problem with controller method not called after 2 or more player connect
 - Commenting code
 - Fix when collision / name tag / respawn ?
 - object pool for spawn boxes and tail elements

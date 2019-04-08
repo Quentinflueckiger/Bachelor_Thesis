@@ -32,8 +32,7 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         if (isLocalPlayer)
         {
             spc.enabled = true;
-            controller.SetActive(true);
-            
+            controller.SetActive(true);          
         }
 
         else
@@ -45,7 +44,7 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         { 
             if (controllerPanel != null)
                 controllerPanel.SetActive(false);
-            controller.gameObject.SetActive(false);
+            controller.gameObject.transform.localScale = new Vector3(0,0,0);
         }
 
         // TODO : Transfert user name from lobby
@@ -56,8 +55,8 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         nameTag.text = playerName;
 
         // Parent the controller to the Controller object which is a child of the main canvas
-        controller.transform.SetParent(controllerHolder.transform);
-        controller.transform.position.Set(0, 0, 0);
+        //controller.transform.SetParent(controllerHolder.transform);
+        //controller.transform.position.Set(0, 0, 0);
 
     }
 
