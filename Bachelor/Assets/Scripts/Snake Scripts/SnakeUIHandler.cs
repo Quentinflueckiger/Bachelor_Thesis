@@ -26,13 +26,13 @@ public class SnakeUIHandler : MonoBehaviour
 
         // Checks plateform before runtime
         // If it's a standalone version or in the editor it means it is the server
-        // TODO : UNITY_STANDALONE ||
 #if UNITY_EDITOR || UNITY_STANDALONE
         connectPanel.SetActive(false);
         startServerPanel.SetActive(true);
         stopServerBtn.SetActive(false);
         timerText.SetActive(true);
-
+        if (hud != null)
+            hud.showGUI = false;
         // Otherwise it is the client
 #else
         connectPanel.SetActive(true);
@@ -40,8 +40,8 @@ public class SnakeUIHandler : MonoBehaviour
         timerText.SetActive(false);
 #endif
 
-        if (hud != null)
-            hud.showGUI = false;
+        /*if (hud != null)
+            hud.showGUI = false;*/
     }
 
     // TODO : Check if connection succeed

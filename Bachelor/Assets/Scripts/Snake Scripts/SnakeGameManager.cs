@@ -134,7 +134,7 @@ public class SnakeGameManager : MonoBehaviour
 
         // Show score board
         // TODO : UNITY_STANDALONE
-#if UNITY_EDITOR ||UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE
         scoreboard.SetActive(true);
 #endif
     }
