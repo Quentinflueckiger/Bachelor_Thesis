@@ -87,7 +87,21 @@ public class SnakeSetUpPlayer : NetworkBehaviour
             */
         }
     }
-
+    /*
+     * oid OnGUI()
+    {
+        if (isLocalPlayer)
+        {
+            if (GUI.Button(new Rect(250, 150, 100, 50), "Up"))
+                spc.GoUp(); ;
+            if (GUI.Button(new Rect(100, 100, 50, 100), "Left"))
+                spc.GoLeft();
+            if (GUI.Button(new Rect(400, 100, 50, 100), "Right"))
+                spc.GoRight();
+            if (GUI.Button(new Rect(250, 250, 100, 50), "Down"))
+                spc.GoDown();
+        }
+    }*/
     #region Deprecated code
     /*
     private void InitActionList()
@@ -109,6 +123,6 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         }
     }
     */
-    #endregion
+#endregion
 }
 

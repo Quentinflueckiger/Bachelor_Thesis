@@ -10,10 +10,24 @@
 - Controller issue (fixed first problem, with localscaling on the canvase) 	DONE
 - Second problem with controller method not called after 2 or more player connect
 - Commenting code
+- Create Lobby !!!!!!!!!!	
+- Add User name and snake color (Lobby)
+- Centralize player info
+- Prototype Domino game
+
+++	
+- Sound ?
 - Fix when collision / name tag / respawn ?
 - object pool for spawn boxes and tail elements
 - add random color to controller (color of bonuses)
-- Create Lobby !!!!!!!!!!
-- add random color to snake on connect		
-- Add User name (Lobby)
-- Centralize player info		
+- Perfectionner snake tail	
+
+- Image avant après, 5 personnes jouent sur un smartphone seul puis ensemble avec l'écran BONHEUR !
+- Hub qui peut être agrandis avec plus de jeux
+- Une seule application ? serveur client possible par le même programme at launch
+- NOOOOOOOOOOM!!! ?Together ?
+- together
+- together
+- together
+- share information !!
+- Design controller (directional arrow ?)
