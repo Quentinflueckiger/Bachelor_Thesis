@@ -88,7 +88,7 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         }
     }
     /*
-     * oid OnGUI()
+     * void OnGUI()
     {
         if (isLocalPlayer)
         {

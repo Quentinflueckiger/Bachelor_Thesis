@@ -39,9 +39,6 @@ public class SnakeUIHandler : MonoBehaviour
         startServerPanel.SetActive(false);
         timerText.SetActive(false);
 #endif
-
-        /*if (hud != null)
-            hud.showGUI = false;*/
     }
 
     // TODO : Check if connection succeed

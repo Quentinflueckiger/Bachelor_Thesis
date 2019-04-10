@@ -103,7 +103,7 @@ public class SnakeGameManager : MonoBehaviour
     {
         players.Add(player);
         playersAlive.Add(player);
-        Debug.Log(players.Count);
+        Debug.Log("Player added, number of players : " + players.Count);
     }
 
     public void Remove(GameObject player)

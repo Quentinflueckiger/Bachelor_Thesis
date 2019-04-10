@@ -9,12 +9,13 @@
 - Score board									DONE
 - Controller issue (fixed first problem, with localscaling on the canvase) 	DONE
 - Second problem with controller method not called after 2 or more player connect
+- Pause menu (escape) to quit and or go back to hub
 - Commenting code
 - Create Lobby !!!!!!!!!!	
 - Add User name and snake color (Lobby)
 - Centralize player info
 - Prototype Domino game
-
+- On Disconnect take away from game manager list of players
 ++	
 - Sound ?
 - Fix when collision / name tag / respawn ?
