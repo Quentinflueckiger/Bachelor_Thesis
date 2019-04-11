@@ -160,10 +160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3de4bb6b8c2f3149b875853234111db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameTag: {fileID: 6840296079628370786, guid: 38ec265aca85453469cacb6cdba5cd33, type: 3}
+  nameTag: {fileID: 79, guid: 38ec265aca85453469cacb6cdba5cd33, type: 3}
   playerName: Player Name
   tagOffSet: {x: 0, y: 3.5, z: 0}
   controller: {fileID: 3485794448389316310}
+  canvasController: {fileID: 22}
 --- !u!114 &78
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &65
 RectTransform:
   m_ObjectHideFlags: 0

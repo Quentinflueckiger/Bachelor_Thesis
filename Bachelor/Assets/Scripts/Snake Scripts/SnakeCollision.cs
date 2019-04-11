@@ -44,7 +44,8 @@ public class SnakeCollision : MonoBehaviour
             // TODO : Different value for spawned boxes ?
             AddBoxToSnake(other.gameObject);
 
-            // TODO : Use object pool
+            // TODO : Optimisation
+            //        Use object pool
             Destroy(other.gameObject);
         }
     }

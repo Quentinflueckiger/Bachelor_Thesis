@@ -133,7 +133,6 @@ public class SnakeGameManager : MonoBehaviour
         // TODO : Add what happens when the game is ended due to lack of skill of the players
 
         // Show score board
-        // TODO : UNITY_STANDALONE
 #if UNITY_EDITOR || UNITY_STANDALONE
         scoreboard.SetActive(true);
 #endif
@@ -146,18 +145,18 @@ public class SnakeGameManager : MonoBehaviour
         gameStart = false;
         DisableTimerText();
 
-        // TODO : Add what happens when the game is ended due to a natural cause
+        // TODO : DONE
+        //        Add what happens when the game is ended due to a natural cause
         foreach (GameObject player in playersAlive)
         {
             player.GetComponent<SnakePlayerController>().CmdOnEndGame();
             player.GetComponent<SnakePlayerController>().OnEndGame();
         }
         // Show score board
-        // TODO : UNITY_STANDALONE
 #if UNITY_EDITOR || UNITY_STANDALONE
         scoreboard.SetActive(true);
 #endif
-
+        // TODO : Implement back to hub or replay
     }
 
     private void Count()

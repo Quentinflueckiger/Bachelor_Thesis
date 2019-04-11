@@ -22,7 +22,8 @@ public class SnakeTailController : MonoBehaviour
         // Add new element to the tail
         if (ate)
         {
-            // TODO : Use object pool
+            // TODO : Optimisation
+            //        Use object pool
             // Load Prefab into the world, set it's material and parent
             GameObject box = (GameObject)Instantiate(boxPrefab,
                                                   position,
@@ -36,7 +37,7 @@ public class SnakeTailController : MonoBehaviour
             // Reset the flag
             ate = false;
 
-            // TODO : find a work around the vector3 == null 
+            // TODO : Find a work around the vector3 == null 
             if (oldPosition == null)
                 oldPosition = position;
         }

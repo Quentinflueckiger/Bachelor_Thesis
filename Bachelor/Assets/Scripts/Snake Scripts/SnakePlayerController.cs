@@ -53,9 +53,6 @@ public class SnakePlayerController : NetworkBehaviour
 
     void Update()
     {
-        if (Event.GetEventCount()>0)
-            CmdDebugLog("Event nbr cmd: " + Event.current.type);
-
         if (Input.GetKeyDown(KeyCode.UpArrow))
             GoUp();
 

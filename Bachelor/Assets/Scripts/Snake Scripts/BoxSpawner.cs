@@ -8,7 +8,8 @@ public class BoxSpawner : NetworkBehaviour
     public GameObject box;
     public Material[] spriteMaterial;
 
-    // TODO: Put those variables in a game manager
+    // TODO: Done  
+    //       Put those variables in a game manager
     private int maxBoxes;
     private int spawnInterval;
     private bool isSpawning = false;
@@ -54,7 +55,8 @@ public class BoxSpawner : NetworkBehaviour
 
     private void SpawnBox()
     {
-        // TODO : Create a pool of boxes to use instead of destroying and creating new each time
+        // TODO : Optimisation, fluffy
+        //        Create a pool of boxes to use instead of destroying and creating new each time
         // DONE
         //        Check that the spawnPosition is empty before spawning the new box 
         
@@ -74,7 +76,8 @@ public class BoxSpawner : NetworkBehaviour
 
     private static int GetCurrentAmountOfBoxes()
     {
-        // TODO: Try with a public static int which gets incr or decr when a box spawns or get eaten
+        // TODO: Optimisation, fluffy
+        //       Try with a public static int which gets incr or decr when a box spawns or get eaten
         return GameObject.FindGameObjectsWithTag("Box").Length;
     }
 
@@ -103,6 +106,7 @@ public class BoxSpawner : NetworkBehaviour
     }
 
     // Idea not kept, used Raycast2D
+    // TODO : Screenshot for doc
     private bool CheckIfEmptyWithMatrix(int x, int y)
     {
         // TODO : Create a matrix from Width x Height and check the surroundings from x,y

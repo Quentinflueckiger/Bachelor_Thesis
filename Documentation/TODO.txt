@@ -1,3 +1,5 @@
+147.87.19.249
+
 - overrid networkmanagerhud to connect with button 				DONE~
 - Hide connect button when not client and when connected			DONE
 - custom button to start server							DONE
@@ -8,9 +10,10 @@
 - End of game Game manager 							DONE
 - Score board									DONE
 - Controller issue (fixed first problem, with localscaling on the canvase) 	DONE
-- Second problem with controller method not called after 2 or more player connect
-- Pause menu (escape) to quit and or go back to hub
-- Commenting code
+- Second problem with controller method not called after 2 or more player connect 
+	See https://forum.unity.com/threads/multiplayer-canvas-ui.503123/	DONE YESSSS !!!!!
+- Pause menu (escape) to quit and or go back to hub				Partialy done
+- Commenting code / cleansing it from unused part
 - Create Lobby !!!!!!!!!!	
 - Add User name and snake color (Lobby)
 - Centralize player info
@@ -22,6 +25,7 @@
 - object pool for spawn boxes and tail elements
 - add random color to controller (color of bonuses)
 - Perfectionner snake tail	
+- Text with textmeshpro !!
 
 - Image avant après, 5 personnes jouent sur un smartphone seul puis ensemble avec l'écran BONHEUR !
 - Hub qui peut être agrandis avec plus de jeux

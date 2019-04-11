@@ -11,7 +11,6 @@ public class IpAdressTag : MonoBehaviour
 
     void Start()
     {
-        // TODO : UNITY_STANDALONE
 #if UNITY_EDITOR || UNITY_STANDALONE
         ip = ShowIp.Instance.LocalIPAddress();
 

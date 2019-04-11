@@ -8,6 +8,7 @@ public class SnakeSetUpPlayer : NetworkBehaviour
     public string playerName;
     public Vector3 tagOffSet;
     public GameObject controller;
+    public GameObject canvasController;
 
     //public GameObject ctrPanel;
     private SnakePlayerController spc;
@@ -32,12 +33,14 @@ public class SnakeSetUpPlayer : NetworkBehaviour
         if (isLocalPlayer)
         {
             spc.enabled = true;
-            controller.SetActive(true);          
+            controller.SetActive(true);
+            canvasController.SetActive(true);
         }
 
         else
         {
-            spc.enabled = false;      
+            spc.enabled = false;
+            canvasController.SetActive(false);
         }
 
         if (isServer)
