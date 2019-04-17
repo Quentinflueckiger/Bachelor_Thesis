@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Tail
   - MainCanvas
+  - LevelSelector
   layers:
   - Default
   - TransparentFX
