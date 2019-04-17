@@ -12,19 +12,23 @@
 - Controller issue (fixed first problem, with localscaling on the canvase) 	DONE
 - Second problem with controller method not called after 2 or more player connect 
 	See https://forum.unity.com/threads/multiplayer-canvas-ui.503123/	DONE YESSSS !!!!!
-- Pause menu (escape) to quit and or go back to hub				Partialy done
-- Commenting code / cleansing it from unused part
-- Create Lobby !!!!!!!!!!	
-- Add User name and snake color (Lobby)
-- Centralize player info
+- Pause menu (escape) to quit and or go back to hub				Partialy done (stop the invoke repeating)
+- Create Lobby !!!!!!!!!!							
+- Add User name and snake color (Lobby)						DONE
 - Prototype Domino game
+
+
+- Centralize player inf
+- Commenting code / cleansing it from unused parto
 - On Disconnect take away from game manager list of players
+
 ++	
 - Sound ?
 - Fix when collision / name tag / respawn ?
 - object pool for spawn boxes and tail elements
 - add random color to controller (color of bonuses)
-- Perfectionner snake tail	
+- Perfectionner snake tail
+- Fix issue when eating two box at once (collision with tail)	
 - Text with textmeshpro !!
 
 - Image avant après, 5 personnes jouent sur un smartphone seul puis ensemble avec l'écran BONHEUR !
