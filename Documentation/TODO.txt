@@ -15,7 +15,8 @@
 - Pause menu (escape) to quit and or go back to hub				Partialy done (stop the invoke repeating)
 - Create Lobby !!!!!!!!!!							DONE
 - Add User name and snake color (Lobby)						DONE
-- Fix connection problem on android
+- Fix connection problem on android 						DONE
+- Lobby player not instantiating correctly the prefab on android but on standalone it works just fine
 - Show lobby list panel on server and countdown
 - Disable possibility to add more player with one controller
 - Remove player on disconnect
