@@ -128,6 +128,14 @@ public class SnakePlayerController : NetworkBehaviour
 
     #endregion
 
+    public void OnDeath(string name)
+    {
+        CancelStepUpdate();
+        this.gameObject.SetActive(false);
+        sgm.RemovePlayer(this.gameObject);
+        Debug.Log("Collision with: " + name);
+    }
+
     public void OnEndGame()
     {
         CancelStepUpdate();

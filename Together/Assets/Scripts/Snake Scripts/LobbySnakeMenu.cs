@@ -46,11 +46,12 @@ public class LobbySnakeMenu : MonoBehaviour
     public void OnClickDedicated()
     {
         lobbyManager.ChangeTo(null);
+        lobbyManager.networkAddress = ip;
         lobbyManager.StartServer();
 
         lobbyManager.backDelegate = lobbyManager.StopServerClbk;
 
-        lobbyManager.SetServerInfo("Dedicated Server", ip);// lobbyManager.networkAddress);
+        lobbyManager.SetServerInfo("Dedicated Server", lobbyManager.networkAddress);
 
         mainPanel.SetActive(false);
     }

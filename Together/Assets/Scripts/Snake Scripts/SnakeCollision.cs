@@ -31,7 +31,11 @@ public class SnakeCollision : MonoBehaviour
         {
             // TODO : Add code to check the color and steal this part
             if (spc != null)
+            {
                 spc.CmdOnDeath(other.collider.name);
+                spc.OnDeath(other.collider.name);
+
+            }      
             else
                 Debug.Log("SnakePlayerController not assigned");
         }

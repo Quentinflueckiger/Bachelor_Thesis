@@ -13,14 +13,17 @@
 - Second problem with controller method not called after 2 or more player connect 
 	See https://forum.unity.com/threads/multiplayer-canvas-ui.503123/	DONE YESSSS !!!!!
 - Pause menu (escape) to quit and or go back to hub				Partialy done (stop the invoke repeating)
-- Create Lobby !!!!!!!!!!							
+- Create Lobby !!!!!!!!!!							DONE
 - Add User name and snake color (Lobby)						DONE
-- Prototype Domino game
+- Fix connection problem on android
+- Show lobby list panel on server and countdown
+- Disable possibility to add more player with one controller
+- Remove player on disconnect
+- Prototype Domino game from game manager list of players
 
 
-- Centralize player inf
+- Centralize player info
 - Commenting code / cleansing it from unused parto
-- On Disconnect take away from game manager list of players
 
 ++	
 - Sound ?
