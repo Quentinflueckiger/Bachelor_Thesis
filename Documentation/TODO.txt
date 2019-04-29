@@ -1,6 +1,6 @@
 147.87.19.249
 
-- overrid networkmanagerhud to connect with button 				DONE~
+- overrid networkmanagerhud to connect with button 				DONE
 - Hide connect button when not client and when connected			DONE
 - custom button to start server							DONE
 - hide base manager hud 							DONE
@@ -16,17 +16,22 @@
 - Create Lobby !!!!!!!!!!							DONE
 - Add User name and snake color (Lobby)						DONE
 - Fix connection problem on android 						DONE
-- Lobby player not instantiating correctly the prefab on android but on standalone it works just fine
+
+Domino
+- Prototype Domino game from game manager list of players
+- Implement turn 
+- Implement control of playable cards
+- Implement drawable, and pile 
+- UI
+
+Lobby
+- List instantiation at runtime problem on android
 - Show lobby list panel on server and countdown
 - Disable possibility to add more player with one controller
 - Remove player on disconnect
-- Prototype Domino game from game manager list of players
 
-
-- Centralize player info
-- Commenting code / cleansing it from unused parto
-
-++	
+Snake
+- Don't show scoreboard on death, but blinking death text
 - Sound ?
 - Fix when collision / name tag / respawn ?
 - object pool for spawn boxes and tail elements
@@ -34,6 +39,9 @@
 - Perfectionner snake tail
 - Fix issue when eating two box at once (collision with tail)	
 - Text with textmeshpro !!
+
+- Centralize player info
+- Commenting code / cleansing it from unused parto
 
 - Image avant après, 5 personnes jouent sur un smartphone seul puis ensemble avec l'écran BONHEUR !
 - Hub qui peut être agrandis avec plus de jeux
@@ -44,3 +52,5 @@
 - together
 - share information !!
 - Design controller (directional arrow ?)
+- video 90sec
+- 
