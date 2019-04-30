@@ -19,6 +19,7 @@
 
 Domino
 - Prototype Domino game from game manager list of players
+- Implement network/lobby
 - Implement turn 
 - Implement control of playable cards
 - Implement drawable, and pile 

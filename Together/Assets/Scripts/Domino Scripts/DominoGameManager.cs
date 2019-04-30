@@ -55,4 +55,16 @@ public class DominoGameManager : MonoBehaviour
         gameStart = true;
         endGame = false;
     }
+
+    public void AddPlayer(GameObject player)
+    {
+        players.Add(player);
+        Debug.Log("Player added, number of players : " + players.Count);
+    }
+
+    public void RemovePlayer(GameObject player)
+    {
+        players.Remove(player);
+        Debug.Log("Removed 1 player");
+    }
 }

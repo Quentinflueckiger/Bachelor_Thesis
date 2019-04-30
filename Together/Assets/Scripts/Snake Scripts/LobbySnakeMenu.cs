@@ -8,7 +8,7 @@ public class LobbySnakeMenu : MonoBehaviour
 {
     public LobbyManager lobbyManager;
 
-    public RectTransform lobbyServerList;
+    //public RectTransform lobbyServerList;
     public RectTransform lobbyPanel;
 
     public InputField ipInput;
