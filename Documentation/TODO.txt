@@ -30,6 +30,7 @@ Lobby
 - Show lobby list panel on server and countdown
 - Disable possibility to add more player with one controller
 - Remove player on disconnect
+- Fluffy remember username with playerpref
 
 Snake
 - Don't show scoreboard on death, but blinking death text

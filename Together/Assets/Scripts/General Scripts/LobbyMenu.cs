@@ -2,9 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using Prototype.NetworkLobby;
+using System.Net;
 
 //Main menu, mainly only a bunch of callback called by the UI (setup throught the Inspector)
-public class LobbySnakeMenu : MonoBehaviour
+public class LobbyMenu : MonoBehaviour
 {
     public LobbyManager lobbyManager;
 
@@ -24,7 +25,7 @@ public class LobbySnakeMenu : MonoBehaviour
         ipInput.onEndEdit.RemoveAllListeners();
         ipInput.onEndEdit.AddListener(onEndEditIP);
 
-        ip = ShowIp.Instance.LocalIPAddress();
+        ip = LocalIPAddress();
 
     }
 
@@ -62,6 +63,22 @@ public class LobbySnakeMenu : MonoBehaviour
         {
             OnClickJoin();
         }
+    }
+
+    private string LocalIPAddress()
+    {
+        IPHostEntry host;
+        string localIP = "";
+        host = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (IPAddress ip in host.AddressList)
+        {
+            if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            {
+                localIP = ip.ToString();
+                break;
+            }
+        }
+        return localIP;
     }
 
 }

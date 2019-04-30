@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test/Hub.unity
     guid: 6cf55e356fb044749930052b7b918809
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/SnakeLobby.unity
     guid: 2cccd93e14b675f4fb01355549e750a8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/SnakeGame.unity
     guid: 27f8bd070c5e89f40a7073c3429f66e3
   - enabled: 1
