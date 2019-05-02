@@ -97,7 +97,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1406696674101045723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.95129585, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.95129585, g: 1, b: 0, a: 0.49019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 1406696674825023266}
   - component: {fileID: 1406696674825023265}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ControllerPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,15 +430,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 86cea1804d5a2414f8b0d046096822fe, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -653,6 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1406696675344056738}
   - component: {fileID: 1406696675344056740}
+  - component: {fileID: 8839162901378019328}
   - component: {fileID: 1406696675344056739}
   m_Layer: 0
   m_Name: Player
@@ -688,6 +689,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7ab5f4783546d43b910d24ceb40232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8839162901378019328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406696675344056737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcae9c187a59bd44c8d46b11229e933d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: player name
+  controller: {fileID: 1406696674825023279}
+  canvasController: {fileID: 1406696674101045722}
 --- !u!114 &1406696675344056739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,7 +797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

@@ -53,7 +53,8 @@ public class SnakeSetUpPlayer : NetworkBehaviour
             controller.gameObject.transform.localScale = new Vector3(0, 0, 0);
         }
 
-        // TODO : Transfert user name from lobby
+        // TODO : DONE
+        //        Transfert user name from lobby
         // Instantiate the text object which holds the player's name/username
         Transform canvas = GameObject.Find("PlayerNames").transform;
         nameTag = Instantiate(nameTag, canvas);
@@ -107,8 +108,10 @@ public class SnakeSetUpPlayer : NetworkBehaviour
             */
         }
     }
-    /*
-     * void OnGUI()
+
+    #region Deprecated code
+    /* 
+    void OnGUI()
     {
         if (isLocalPlayer)
         {
@@ -121,9 +124,7 @@ public class SnakeSetUpPlayer : NetworkBehaviour
             if (GUI.Button(new Rect(250, 250, 100, 50), "Down"))
                 spc.GoDown();
         }
-    }*/
-    #region Deprecated code
-    /*
+    }
     private void InitActionList()
     {
         actionBtn.Add(spc.GoUp);

@@ -9,6 +9,8 @@ public class DominoGameManager : MonoBehaviour
     public GameObject dominoPrefab;
     public GameObject controllerPanel;
 
+    public Text turnText;
+
     public List<DominoCard> dominoCards = new List<DominoCard>();
     private List<DominoCard> dominoAvailable;
 
@@ -16,28 +18,18 @@ public class DominoGameManager : MonoBehaviour
     private bool endGame = false;
     private bool gameStart = false;
 
+    private int playerTurn = 0;
+
     public static DominoGameManager Instance;
 
     private void Awake()
     {
         Instance = this;
-        // Put in start game ?
-        dominoAvailable = new List<DominoCard>(dominoCards);
     }
     
     void Start()
     {
-        int x = 6;
-        Debug.Log("domino list : "+dominoAvailable.Count);
-        for (int i = 0; i < x; i++)
-        {
-            GameObject dominoToInstantiate = Instantiate(dominoPrefab, new Vector3(),Quaternion.identity);
-            int random = UnityEngine.Random.Range(0, dominoAvailable.Count - 1);
-            dominoToInstantiate.GetComponent<DominoDisplay>().SetDominoCard(dominoAvailable[random]);
-            dominoToInstantiate.transform.parent = controllerPanel.transform;
-            dominoAvailable.RemoveAt(random);
-        }
-        Debug.Log("domino list : " + dominoAvailable.Count);
+       
     }
 
     // Update is called once per frame
@@ -54,6 +46,10 @@ public class DominoGameManager : MonoBehaviour
     {
         gameStart = true;
         endGame = false;
+        dominoAvailable = new List<DominoCard>(dominoCards);
+
+        players[playerTurn].GetComponent<DominoPlayer>().SetTurn(true);
+        SetTurnText(players[playerTurn].GetComponent<DominoSetUpPlayer>().GetPlayerName());
     }
 
     public void AddPlayer(GameObject player)
@@ -66,5 +62,46 @@ public class DominoGameManager : MonoBehaviour
     {
         players.Remove(player);
         Debug.Log("Removed 1 player");
+    }
+
+    public void NextPlayer()
+    {
+        players[playerTurn].GetComponent<DominoPlayer>().SetTurn(false);
+        IncrementPlayerTurn();
+        players[playerTurn].GetComponent<DominoPlayer>().SetTurn(true);
+        SetTurnText(players[playerTurn].GetComponent<DominoSetUpPlayer>().GetPlayerName());
+    }
+
+    private void IncrementPlayerTurn()
+    {
+        if (playerTurn < players.Count)
+        {
+            playerTurn++;
+        }
+        else
+        {
+            playerTurn = 0;
+        }
+        
+    }
+
+    private void SetTurnText(string text)
+    {
+        turnText.text = text + "'s turn.";
+    }
+    private void TestSpawn()
+    {
+        int x = 6;
+        Debug.Log("domino list : " + dominoAvailable.Count);
+        for (int i = 0; i < x; i++)
+        {
+            GameObject dominoToInstantiate = Instantiate(dominoPrefab, new Vector3(), Quaternion.identity);
+            int random = UnityEngine.Random.Range(0, dominoAvailable.Count - 1);
+            dominoToInstantiate.GetComponent<DominoDisplay>().SetDominoCard(dominoAvailable[random]);
+            dominoToInstantiate.transform.parent = controllerPanel.transform;
+            dominoAvailable.RemoveAt(random);
+        }
+        Debug.Log("domino list : " + dominoAvailable.Count);
+
     }
 }
