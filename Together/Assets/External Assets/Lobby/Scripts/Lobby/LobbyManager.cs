@@ -373,6 +373,9 @@ namespace Prototype.NetworkLobby
                         if (lobbySlots[i] != null)
                         {//there is maxPlayer slots, so some could be == null, need to test it before accessing!
                             (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(floorTime);
+
+                            countdownPanel.UIText.text = "Match Starting in " + floorTime;
+                            countdownPanel.gameObject.SetActive(floorTime != 0);
                         }
                     }
                 }
@@ -386,6 +389,7 @@ namespace Prototype.NetworkLobby
                 }
             }
 
+            countdownPanel.gameObject.SetActive(false);
             ServerChangeScene(playScene);
         }
 

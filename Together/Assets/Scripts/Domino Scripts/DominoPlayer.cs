@@ -29,4 +29,8 @@ public class DominoPlayer : NetworkBehaviour
     {
         
     }
+    public void OnDestroy()
+    {
+        dgm.RemovePlayer(this.gameObject);
+    }
 }

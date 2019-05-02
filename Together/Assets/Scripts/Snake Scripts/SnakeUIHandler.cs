@@ -9,17 +9,20 @@ public class SnakeUIHandler : MonoBehaviour
 {
     private GameObject timerText;
     private GameObject lobbyTopPanel;
+    private GameObject lobbyMainPanel;
     private NetworkLobbyManager lobbyManager;
 
     void Start()
     {
         timerText = GameObject.Find("GameTimer");
         lobbyTopPanel = GameObject.Find("TopPanel");
+        lobbyMainPanel = GameObject.Find("LobbyPanel");
         lobbyManager = FindObjectOfType<NetworkLobbyManager>();
 
         NetworkManagerHUD hud = FindObjectOfType<NetworkManagerHUD>();
 
         lobbyTopPanel.SetActive(false);
+        lobbyMainPanel.SetActive(false);
 
         // Checks plateform before runtime
         // If it's a standalone version or in the editor it means it is the server

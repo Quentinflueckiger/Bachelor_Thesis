@@ -46,7 +46,9 @@ public class LobbyMenu : MonoBehaviour
 
     public void OnClickDedicated()
     {
-        lobbyManager.ChangeTo(null);
+        //lobbyManager.ChangeTo(null);
+        lobbyManager.ChangeTo(lobbyPanel);
+
         lobbyManager.networkAddress = ip;
         lobbyManager.StartServer();
 

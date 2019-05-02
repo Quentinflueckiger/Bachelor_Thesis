@@ -1,5 +1,3 @@
-147.87.19.249
-
 - overrid networkmanagerhud to connect with button 				DONE
 - Hide connect button when not client and when connected			DONE
 - custom button to start server							DONE
@@ -28,12 +26,13 @@ Domino
 Lobby
 - List instantiation at runtime problem on android
 - Show lobby list panel on server and countdown
-- Disable possibility to add more player with one controller
+	list -> lobbymanager/lobbyplayer					Partialy done (countdown)
+- Disable possibility to add more player with one controller			DONE
 - Remove player on disconnect
-- Fluffy remember username with playerpref
+- ? remember username with playerpref
 
 Snake
-- Don't show scoreboard on death, but blinking death text
+- Don't show scoreboard on death, but blinking death text on controller
 - Sound ?
 - Fix when collision / name tag / respawn ?
 - object pool for spawn boxes and tail elements
@@ -45,6 +44,7 @@ Snake
 - Centralize player info
 - Commenting code / cleansing it from unused parto
 
+Ideas
 - Image avant après, 5 personnes jouent sur un smartphone seul puis ensemble avec l'écran BONHEUR !
 - Hub qui peut être agrandis avec plus de jeux
 - Une seule application ? serveur client possible par le même programme at launch
