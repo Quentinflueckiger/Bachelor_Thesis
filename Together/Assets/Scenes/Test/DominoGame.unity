@@ -644,6 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598069dd62cfc44489538cd675dc6e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nbrOfDominosAtStart: 7
   dominoPrefab: {fileID: 588309739680365395, guid: 896670daaccd20947b9f91b14e416620,
     type: 3}
   controllerPanel: {fileID: 550588461}

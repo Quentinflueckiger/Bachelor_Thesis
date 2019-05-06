@@ -1,3 +1,4 @@
+147.87.18.197
 - overrid networkmanagerhud to connect with button 				DONE
 - Hide connect button when not client and when connected			DONE
 - custom button to start server							DONE
@@ -17,14 +18,16 @@
 
 Domino
 - Prototype Domino game from game manager list of players
-- Implement network/lobby
+- Problem with domino game manager, linked most likely to having multiple ones
+	centralize it with lobbymanager ?
+- Implement drawable, and pile 
+- Implement network/lobby							DONE
 - Implement turn 
 - Implement control of playable cards
-- Implement drawable, and pile 
 - UI
 
 Lobby
-- List instantiation at runtime problem on android
+- List instantiation at runtime problem on android				Works fine in emulator ...
 - Show lobby list panel on server and countdown
 	list -> lobbymanager/lobbyplayer					Partialy done (countdown)
 - Disable possibility to add more player with one controller			DONE

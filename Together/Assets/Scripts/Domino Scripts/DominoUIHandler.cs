@@ -27,7 +27,7 @@ public class DominoUIHandler : MonoBehaviour
         turnText.SetActive(true);
         // Otherwise it is the client
 #else
-        timerText.SetActive(false);
+        turnText.SetActive(false);
 #endif
     }
 

@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test/SnakeGame.unity
     guid: 27f8bd070c5e89f40a7073c3429f66e3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/DominoLobby.unity
     guid: cf2f982d36ab926418f408c71bfdedfc
+  - enabled: 1
+    path: Assets/Scenes/Test/DominoLobby 1.unity
+    guid: 2ba9d47dea0cddc4486db0aa737585e4
   - enabled: 1
     path: Assets/Scenes/Test/DominoGame.unity
     guid: 1b5e4677badaa5f40a127fd5305a3ce4

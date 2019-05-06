@@ -36,6 +36,7 @@ namespace Prototype.NetworkLobby
             
             if(_layout)
                 _layout.childAlignment = Time.frameCount%2 == 0 ? TextAnchor.UpperCenter : TextAnchor.UpperLeft;
+            //LayoutRebuilder.ForceRebuildLayoutImmediate(playerListContentTransform);
         }
 
         public void AddPlayer(LobbyPlayer player)

@@ -6,9 +6,16 @@ using UnityEngine.Networking;
 public class DominoPlayer : NetworkBehaviour
 {
     public static int playerNbr = 0;
+    public GameObject dominoPrefab;
+    public GameObject canvasController;
 
+    public Transform start;
+    public float dominoSpacing;
+
+    private float nbrOfDominos;
+    private int nbrOfStartDominos;
     private bool isMyTurn = false;
-    private List<DominoCard> hand = new List<DominoCard>();
+    public List<DominoCard> hand = new List<DominoCard>();
 
     DominoGameManager dgm;
 
@@ -24,7 +31,10 @@ public class DominoPlayer : NetworkBehaviour
         if (dgm != null)
         {
             dgm.AddPlayer(this.gameObject);
+            nbrOfStartDominos = dgm.GetNumberOfDominos();
         }
+
+        nbrOfDominos = 0.0f;
     }
 
     // Update is called once per frame
@@ -45,6 +55,43 @@ public class DominoPlayer : NetworkBehaviour
         isMyTurn = turn;
     }
 
+    public void SetHand()
+    {
+        for (int i = 0; i < nbrOfStartDominos; i++)
+        {
+            DominoCard domino = dgm.DrawDomino();
+            hand.Add(domino);
+            UpdateHand(domino);
+        }
+    }
+
+    [Command]
+    public void CmdDrawDomino()
+    {
+        DominoCard domino = dgm.DrawDomino();
+        hand.Add(domino);
+        UpdateHand(domino);
+        RpcDrawDomino();
+    }
+
+    [ClientRpc]
+    public void RpcDrawDomino()
+    {
+        DominoCard domino = dgm.DrawDomino();
+        hand.Add(domino);
+        UpdateHand(domino);
+    }
+
+    private void UpdateHand(DominoCard domino)
+    {
+        GameObject dominoToInstantiate = Instantiate(dominoPrefab, new Vector3(0,0,0), Quaternion.identity);
+        dominoToInstantiate.GetComponent<DominoDisplay>().SetDominoCard(domino);
+        dominoToInstantiate.transform.parent = canvasController.transform;
+        dominoToInstantiate.transform.localScale.Set(.5f, .5f, 1.0f);
+        dominoToInstantiate.transform.position = start.position + new Vector3((nbrOfDominos * dominoSpacing), 0, 0);
+        nbrOfDominos++;
+    }
+    
     public void OnDestroy()
     {
         dgm.RemovePlayer(this.gameObject);

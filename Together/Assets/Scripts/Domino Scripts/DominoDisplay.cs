@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DominoDisplay : MonoBehaviour
 {
-    private DominoCard dominoCard;
+    public DominoCard dominoCard;
 
     public Image artwork;
 
