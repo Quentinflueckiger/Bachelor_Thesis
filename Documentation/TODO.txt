@@ -20,6 +20,7 @@ Domino
 - Prototype Domino game from game manager list of players
 - Problem with domino game manager, linked most likely to having multiple ones
 	centralize it with lobbymanager ?
+     !! Create a cardmanager with server authority only, kind of the boxspawner !!
 - Implement drawable, and pile 
 - Implement network/lobby							DONE
 - Implement turn 

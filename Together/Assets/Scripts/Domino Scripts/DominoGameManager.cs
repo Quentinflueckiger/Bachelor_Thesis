@@ -13,6 +13,7 @@ public class DominoGameManager : MonoBehaviour
     public int nbrOfDominosAtStart;
     public GameObject dominoPrefab;
     public GameObject controllerPanel;
+    public Transform firstDominoPos;
 
     public Text turnText;
 
@@ -23,6 +24,7 @@ public class DominoGameManager : MonoBehaviour
     private bool endGame = false;
     private bool gameStart = false;
 
+    private int[] dominoValues = new int[2];
     private int playerTurn = 0;
 
     public static DominoGameManager Instance;
@@ -57,6 +59,7 @@ public class DominoGameManager : MonoBehaviour
         endGame = false;
         dominoAvailable = new List<DominoCard>(dominoCards);
 
+        SetFirstDomino();
         SetPlayersHand();
 
         players[playerTurn].GetComponent<DominoPlayer>().SetTurn(true);
@@ -101,6 +104,21 @@ public class DominoGameManager : MonoBehaviour
         turnText.text = text + "'s turn.";
     }
 
+    private void SetFirstDomino()
+    {
+        DominoCard domino = DrawDomino();
+
+        dominoValues[0] = domino.GetUpperValue();
+        dominoValues[1] = domino.GetLowerValue();
+
+        GameObject dominoToInstantiate = Instantiate(dominoPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        dominoToInstantiate.GetComponent<DominoDisplay>().SetDominoCard(domino);
+        dominoToInstantiate.transform.parent = firstDominoPos.transform;
+        dominoToInstantiate.transform.localScale.Set(.5f, .5f, 1.0f);
+        dominoToInstantiate.transform.position = firstDominoPos.position;
+        dominoToInstantiate.transform.Rotate(0, 0, 90);
+    }
+
     private void SetPlayersHand()
     {
         foreach (GameObject player in players)
@@ -113,6 +131,21 @@ public class DominoGameManager : MonoBehaviour
     public int GetNumberOfDominos()
     {
         return nbrOfDominosAtStart;
+    }
+
+    public int[] GetDominoValues()
+    {
+        return dominoValues;
+    }
+
+    public void PlayDomino(DominoCard domino)
+    {
+        GameObject dominoToInstantiate = Instantiate(dominoPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        dominoToInstantiate.GetComponent<DominoDisplay>().SetDominoCard(domino);
+        dominoToInstantiate.transform.parent = firstDominoPos.transform;
+        dominoToInstantiate.transform.localScale.Set(.5f, .5f, 1.0f);
+        dominoToInstantiate.transform.position = firstDominoPos.position + new Vector3(50,0,0);
+        dominoToInstantiate.transform.Rotate(0, 0, 90);
     }
 
     public DominoCard DrawDomino()

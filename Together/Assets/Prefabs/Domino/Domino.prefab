@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dominoCard: {fileID: 0}
   artwork: {fileID: 588309738735121887}
+  newPos: {x: 200, y: 200, z: 0}
 --- !u!114 &5635177241345190942
 MonoBehaviour:
   m_ObjectHideFlags: 0
