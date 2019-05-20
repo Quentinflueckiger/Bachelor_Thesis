@@ -158,7 +158,8 @@ public class SnakeGameManager : MonoBehaviour
 #if UNITY_EDITOR || UNITY_STANDALONE
         scoreboard.SetActive(true);
 #endif
-        // TODO : Implement back to hub or replay
+        // TODO : DONE
+        //        Implement back to hub or replay
     }
 
     private void Count()

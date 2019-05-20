@@ -55,7 +55,7 @@ public class BoxSpawner : NetworkBehaviour
 
     private void SpawnBox()
     {
-        // TODO : Optimisation, fluffy
+        // TODO : Optimisation
         //        Create a pool of boxes to use instead of destroying and creating new each time
         // DONE
         //        Check that the spawnPosition is empty before spawning the new box 
@@ -76,7 +76,7 @@ public class BoxSpawner : NetworkBehaviour
 
     private static int GetCurrentAmountOfBoxes()
     {
-        // TODO: Optimisation, fluffy
+        // TODO: Optimisation
         //       Try with a public static int which gets incr or decr when a box spawns or get eaten
         return GameObject.FindGameObjectsWithTag("Box").Length;
     }
@@ -109,7 +109,7 @@ public class BoxSpawner : NetworkBehaviour
     // TODO : Screenshot for doc
     private bool CheckIfEmptyWithMatrix(int x, int y)
     {
-        // TODO : Create a matrix from Width x Height and check the surroundings from x,y
+        //Create a matrix from Width x Height and check the surroundings from x,y
         return false;
     }
 

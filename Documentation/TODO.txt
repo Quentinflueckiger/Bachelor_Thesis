@@ -1,4 +1,3 @@
-147.87.18.197
 - overrid networkmanagerhud to connect with button 				DONE
 - Hide connect button when not client and when connected			DONE
 - custom button to start server							DONE
@@ -17,14 +16,14 @@
 - Fix connection problem on android 						DONE
 
 Domino
-- Prototype Domino game from game manager list of players
+- Prototype Domino game from game manager list of players			DONE
 - Problem with domino game manager, linked most likely to having multiple ones
-	centralize it with lobbymanager ?
-     !! Create a cardmanager with server authority only, kind of the boxspawner !!
-- Implement drawable, and pile 
+	centralize it with lobbymanager ?					NOPE
+     !! Create a cardmanager with server authority only, kind of the boxspawner Didn't work
+- Implement drawable, and pile 							DONE						
 - Implement network/lobby							DONE
-- Implement turn 
-- Implement control of playable cards
+- Implement turn								DONE separatly 
+- Implement control of playable cards		
 - UI
 
 Lobby
@@ -46,7 +45,7 @@ Snake
 - Text with textmeshpro !!
 
 - Centralize player info
-- Commenting code / cleansing it from unused parto
+- Commenting code / cleansing it from unused part
 
 Ideas
 - Image avant après, 5 personnes jouent sur un smartphone seul puis ensemble avec l'écran BONHEUR !

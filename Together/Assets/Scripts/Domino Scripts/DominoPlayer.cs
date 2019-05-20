@@ -55,9 +55,13 @@ public class DominoPlayer : NetworkBehaviour
         isMyTurn = turn;
     }
 
-    public void SetHand(List<DominoCard> hand)
+    public void SetHand(int[] handIndex)
     {
-        this.hand = new List<DominoCard>(hand);
+        foreach (var dominoIndex in handIndex)
+        {
+            hand.Add(dgm.GetDominoAt(dominoIndex));
+        }
+        //this.hand = new List<DominoCard>(handIndex);
         /*for (int i = 0; i < nbrOfStartDominos; i++)
         {
             DominoCard domino = dgm.DrawDomino();
@@ -73,7 +77,7 @@ public class DominoPlayer : NetworkBehaviour
     [Command]
     public void CmdDrawDomino()
     {
-        DominoCard domino = dgm.DrawDomino();
+        DominoCard domino = dgm.GetDominoAt(dgm.DrawDominoIndex());
         hand.Add(domino);
         UpdateHand(domino);
         RpcDrawDomino();
@@ -82,7 +86,7 @@ public class DominoPlayer : NetworkBehaviour
     [ClientRpc]
     public void RpcDrawDomino()
     {
-        DominoCard domino = dgm.DrawDomino();
+        DominoCard domino = dgm.GetDominoAt(dgm.DrawDominoIndex());
         hand.Add(domino);
         UpdateHand(domino);
     }

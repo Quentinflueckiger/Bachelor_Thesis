@@ -22,7 +22,8 @@ public class SnakeScoreboard : MonoBehaviour
 
     private void OnEnable()
     {
-        // TODO : Sort the list by score
+        // TODO : Detail
+        //        Sort the list by score
         GameObject[] players = sgm.GetPlayers();
 
         foreach (GameObject player in players)

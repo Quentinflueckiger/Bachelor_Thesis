@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7518360006465981123
 Transform:
   m_ObjectHideFlags: 0
@@ -53,8 +53,7 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 3006037403573614612, guid: b8e31fb9ee23c1645a3f0ddbb38e2f77,
-    type: 3}
+  m_PlayerPrefab: {fileID: 4, guid: b8e31fb9ee23c1645a3f0ddbb38e2f77, type: 3}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: 

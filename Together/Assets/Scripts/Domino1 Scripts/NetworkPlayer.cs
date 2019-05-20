@@ -16,6 +16,9 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar(hook = "UpdateTurnDisplay")]
     public string turnText = "";
 
+    [SyncVar(hook = "OnChangeName"), HideInInspector]
+    public string playerName = "player name";
+
     public PlayerControllerigno controller;
     public GameObject controllerPanel;
 
@@ -28,6 +31,15 @@ public class NetworkPlayer : NetworkBehaviour
         controller.OnPlayerInput += OnPlayerInput;
         if (isLocalPlayer)
             controllerPanel.SetActive(true);
+
+        //DontDestroyOnLoad(this);
+
+        base.OnStartClient();
+        Debug.Log("Client Network Player start");
+        StartPlayer();
+
+        //Register();
+        DominoLobbyManager.Instance.RegisterNetworkPlayer(this);
     }
 
     // Update is called once per frame
@@ -39,7 +51,7 @@ public class NetworkPlayer : NetworkBehaviour
             time -= Time.deltaTime;
             if (time <= 0)
             {
-                CustomManager.Instance.AlterTurns();
+                DominoLobbyManager.Instance.AlterTurns();
             }
         }
     }
@@ -47,7 +59,14 @@ public class NetworkPlayer : NetworkBehaviour
     [Server]
     public void EndTurn()
     {
-        CustomManager.Instance.AlterTurns();
+        DominoLobbyManager.Instance.AlterTurns();
+    }
+
+    public void LocalEndTurn()
+    {
+        if (!isLocalPlayer)
+            return;
+        EndTurn();
     }
 
     public override void OnStartClient()
@@ -58,13 +77,20 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("Client Network Player start");
         StartPlayer();
 
-        CustomManager.Instance.RegisterNetworkPlayer(this);
+        Register();
+        //DominoLobbyManager.Instance.RegisterNetworkPlayer(this);
     }
 
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
         controller.SetupLocalPlayer();
+    }
+
+    [Server]
+    public void Register()
+    {
+        DominoLobbyManager.Instance.RegisterNetworkPlayer(this);
     }
 
     [Server]
@@ -84,7 +110,7 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("Turn start for player : " + this.netId);
         isTurn = true;
         time = 15;
-        //turnText = "Player " + this.netId +"'s turn.";
+        //turnText = playerName +"'s turn.";
         RpcTurnStart();
     }
 
@@ -110,7 +136,7 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnNetworkDestroy()
     {
         base.OnNetworkDestroy();
-        CustomManager.Instance.DeregisterNetworkPlayer(this);
+        DominoLobbyManager.Instance.DeregisterNetworkPlayer(this);
     }
 
     public void OnTurnChange(bool turn)
@@ -140,7 +166,7 @@ public class NetworkPlayer : NetworkBehaviour
         //Shoot bullets
 
         //Update score
-        CustomManager.Instance.UpdateScore((int)amount);
+        DominoLobbyManager.Instance.UpdateScore((int)amount);
     }
 
     public void UpdateTurnDisplay(string turn)
@@ -155,6 +181,11 @@ public class NetworkPlayer : NetworkBehaviour
         GameObject timerText = GameObject.FindWithTag("Timer");
         Text timer = timerText.GetComponent<Text>();
         timer.text = Mathf.Round(curtime).ToString();
+    }
+
+    private void OnChangeName(string n)
+    {
+        playerName = n;
     }
 
     public void SetTurn()

@@ -38,7 +38,7 @@ public class SnakeUIHandler : MonoBehaviour
 
     public void BackBtn()
     {
+        lobbyTopPanel.SetActive(true);
         lobbyManager.GetComponent<LobbyManager>().GoBackButton();
-
     }
 }

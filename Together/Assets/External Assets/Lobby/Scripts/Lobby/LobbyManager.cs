@@ -161,7 +161,7 @@ namespace Prototype.NetworkLobby
         public void GoBackButton()
         {
             backDelegate();
-			topPanel.isInGame = false;
+			topPanel.isInGame = true;
             mainMenuPanel.gameObject.SetActive(true);
             topPanel.gameObject.SetActive(true);
         }

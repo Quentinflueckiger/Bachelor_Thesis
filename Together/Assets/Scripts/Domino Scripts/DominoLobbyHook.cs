@@ -13,5 +13,11 @@ public class DominoLobbyHook : LobbyHook
 
         if (domino != null)
             domino.playerName = lobby.playerName;
+        else
+        {
+            NetworkPlayer dominoPlayer = gamePlayer.GetComponent<NetworkPlayer>();
+            if (dominoPlayer != null)
+                dominoPlayer.playerName = lobby.playerName;
+        }
     }
 }

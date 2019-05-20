@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTurn: 0
   time: 100
+  turnText: 
   controller: {fileID: 11}
   controllerPanel: {fileID: 5}
   ready: 0
@@ -391,7 +392,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 10}
-        m_MethodName: EndTurn
+        m_MethodName: LocalEndTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

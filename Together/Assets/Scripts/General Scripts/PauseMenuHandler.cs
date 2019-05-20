@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuHandler : MonoBehaviour
 {
@@ -53,8 +54,7 @@ public class PauseMenuHandler : MonoBehaviour
 
     public void GoBackToHub()
     {
-        // TODO : Implementation
-        Debug.Log("Back to hub, not implemented yet.");
+        SceneManager.LoadScene("Hub");
     }
 
     public void QuitApplication()

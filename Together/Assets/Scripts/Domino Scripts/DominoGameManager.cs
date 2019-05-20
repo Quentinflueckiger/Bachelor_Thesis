@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class DominoGameManager : MonoBehaviour
     public Text turnText;
 
     public List<DominoCard> dominoCards = new List<DominoCard>();
-    private static List<DominoCard> dominoAvailable;
+    private DominoCard[] dominoAvailable;
 
     private List<GameObject> players = new List<GameObject>();
     private bool endGame = false;
@@ -57,7 +58,7 @@ public class DominoGameManager : MonoBehaviour
     {
         gameStart = true;
         endGame = false;
-        dominoAvailable = new List<DominoCard>(dominoCards);
+        dominoAvailable = dominoCards.ToArray();
 
         SetFirstDomino();
         SetPlayersHand();
@@ -106,13 +107,13 @@ public class DominoGameManager : MonoBehaviour
 
     private void SetFirstDomino()
     {
-        DominoCard domino = DrawDomino();
+        int domino = DrawDominoIndex();
 
-        dominoValues[0] = domino.GetUpperValue();
-        dominoValues[1] = domino.GetLowerValue();
+        dominoValues[0] = dominoAvailable[domino].GetUpperValue();
+        dominoValues[1] = dominoAvailable[domino].GetLowerValue();
 
         GameObject dominoToInstantiate = Instantiate(dominoPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        dominoToInstantiate.GetComponent<DominoDisplay>().SetDominoCard(domino);
+        dominoToInstantiate.GetComponent<DominoDisplay>().SetDominoCard(dominoAvailable[domino]);
         dominoToInstantiate.transform.parent = firstDominoPos.transform;
         dominoToInstantiate.transform.localScale.Set(.5f, .5f, 1.0f);
         dominoToInstantiate.transform.position = firstDominoPos.position;
@@ -123,7 +124,7 @@ public class DominoGameManager : MonoBehaviour
     {
         foreach (GameObject player in players)
         {
-            List<DominoCard> hand = GetHand(nbrOfDominosAtStart);
+            int[] hand = GetHand(nbrOfDominosAtStart);
             player.GetComponent<DominoPlayer>().SetHand(hand);
         }
     }
@@ -149,31 +150,47 @@ public class DominoGameManager : MonoBehaviour
         dominoToInstantiate.transform.Rotate(0, 0, 90);
     }
 
-    public List<DominoCard> GetHand(int nbrOfDomino)
+    public int[] GetHand(int nbrOfDomino)
     {
-        List<DominoCard> result = new List<DominoCard>();
+        int[] result = new int[nbrOfDomino];
 
         for (int i = 0; i < nbrOfDomino; i++)
         {
-            result.Add(DrawDomino());
+            result[i] = DrawDominoIndex();
         }
         return result;
 
     }
-    public DominoCard DrawDomino()
+    public int DrawDominoIndex()
     {
+        int domino = UnityEngine.Random.RandomRange(0, dominoCards.Count);
+        while (true)
+        {
+            if (dominoAvailable[domino].GetIsUsed())
+                domino = UnityEngine.Random.RandomRange(0, dominoCards.Count);
+            else
+                break;
+        }
+
+        dominoAvailable[domino].SetIsUsed(true);
+        /*
         if (dominoAvailable.Count < 2)
             return null;
         int random = UnityEngine.Random.Range(0, dominoAvailable.Count - 1);
         DominoCard dominoToReturn = dominoAvailable[random];
         dominoAvailable.RemoveAt(random);
         Debug.Log("domino list : " + dominoAvailable.Count);
+        */
+        return domino;
+    }
 
-        return dominoToReturn;
+    public DominoCard GetDominoAt(int dominoIndex)
+    {
+        return dominoAvailable[dominoIndex];
     }
     #endregion
 
-
+    /*
     private void TestSpawn()
     {
         int x = 6;
@@ -188,5 +205,5 @@ public class DominoGameManager : MonoBehaviour
         }
         Debug.Log("domino list : " + dominoAvailable.Count);
 
-    }
+    }*/
 }

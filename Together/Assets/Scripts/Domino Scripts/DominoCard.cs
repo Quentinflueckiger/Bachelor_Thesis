@@ -9,6 +9,7 @@ public class DominoCard : ScriptableObject
 
     private bool isUpperUsed = false;
     private bool isLowerUsed = false;
+    private bool isUsed = false;
 
     public void Print()
     {
@@ -49,6 +50,16 @@ public class DominoCard : ScriptableObject
     public void SetIsLowerUsed()
     {
         isLowerUsed = true;
+    }
+
+    public bool GetIsUsed()
+    {
+        return isUsed;
+    }
+
+    public void SetIsUsed(bool used)
+    {
+        isUsed = used;
     }
     #endregion
 }

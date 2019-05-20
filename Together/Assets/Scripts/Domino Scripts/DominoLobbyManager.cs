@@ -10,6 +10,7 @@ public class DominoLobbyManager : LobbyManager
 
     List<NetworkPlayer> players;
     private bool gameScene = false;
+    private bool gameStarted = false;
 
     int iActivePlayer = 0;
     public int ActivePlayer
@@ -32,7 +33,7 @@ public class DominoLobbyManager : LobbyManager
 
     private void Update()
     {
-        if (gameScene)
+        if (gameScene & !gameStarted)
         {
 
             if (players.Count > 1)
@@ -54,6 +55,7 @@ public class DominoLobbyManager : LobbyManager
         if (playersReady)
         {
             players[iActivePlayer].StartGame();
+            gameStarted = true;
         }
 
         return playersReady;
