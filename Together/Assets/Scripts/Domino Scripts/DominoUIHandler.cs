@@ -16,7 +16,7 @@ public class DominoUIHandler : MonoBehaviour
         turnText = GameObject.Find("TurnText");
         lobbyTopPanel = GameObject.Find("TopPanel");
         lobbyMainPanel = GameObject.Find("LobbyPanel");
-        lobbyManager = FindObjectOfType<NetworkLobbyManager>();
+        lobbyManager = FindObjectOfType<DominoLobbyManager>();
 
         lobbyTopPanel.SetActive(false);
         lobbyMainPanel.SetActive(false);

@@ -123,7 +123,8 @@ public class DominoGameManager : MonoBehaviour
     {
         foreach (GameObject player in players)
         {
-            player.GetComponent<DominoPlayer>().SetHand();
+            List<DominoCard> hand = GetHand(nbrOfDominosAtStart);
+            player.GetComponent<DominoPlayer>().SetHand(hand);
         }
     }
 
@@ -148,6 +149,17 @@ public class DominoGameManager : MonoBehaviour
         dominoToInstantiate.transform.Rotate(0, 0, 90);
     }
 
+    public List<DominoCard> GetHand(int nbrOfDomino)
+    {
+        List<DominoCard> result = new List<DominoCard>();
+
+        for (int i = 0; i < nbrOfDomino; i++)
+        {
+            result.Add(DrawDomino());
+        }
+        return result;
+
+    }
     public DominoCard DrawDomino()
     {
         if (dominoAvailable.Count < 2)

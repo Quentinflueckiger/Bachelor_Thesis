@@ -55,12 +55,17 @@ public class DominoPlayer : NetworkBehaviour
         isMyTurn = turn;
     }
 
-    public void SetHand()
+    public void SetHand(List<DominoCard> hand)
     {
-        for (int i = 0; i < nbrOfStartDominos; i++)
+        this.hand = new List<DominoCard>(hand);
+        /*for (int i = 0; i < nbrOfStartDominos; i++)
         {
             DominoCard domino = dgm.DrawDomino();
             hand.Add(domino);
+            UpdateHand(domino);
+        }*/
+        foreach (var domino in this.hand)
+        {
             UpdateHand(domino);
         }
     }

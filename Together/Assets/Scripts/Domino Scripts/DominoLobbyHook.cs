@@ -11,6 +11,7 @@ public class DominoLobbyHook : LobbyHook
         LobbyPlayer lobby = lobbyPlayer.GetComponent<LobbyPlayer>();
         DominoSetUpPlayer domino = gamePlayer.GetComponent<DominoSetUpPlayer>();
 
-        domino.playerName = lobby.playerName;
+        if (domino != null)
+            domino.playerName = lobby.playerName;
     }
 }

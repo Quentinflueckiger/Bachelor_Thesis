@@ -423,5 +423,11 @@ namespace Prototype.NetworkLobby
             ChangeTo(mainMenuPanel);
             infoPanel.Display("Client error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
         }
+
+        public void SwitchToHub()
+        {
+            SceneManager.LoadScene("Hub");
+            Destroy(this.gameObject);
+        }
     }
 }

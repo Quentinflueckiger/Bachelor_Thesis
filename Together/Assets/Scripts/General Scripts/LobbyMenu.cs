@@ -26,7 +26,6 @@ public class LobbyMenu : MonoBehaviour
         ipInput.onEndEdit.AddListener(onEndEditIP);
 
         ip = LocalIPAddress();
-
     }
 
     public void OnClickJoin()
