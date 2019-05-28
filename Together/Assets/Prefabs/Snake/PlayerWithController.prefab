@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameTag: {fileID: 79, guid: 38ec265aca85453469cacb6cdba5cd33, type: 3}
   playerName: Player Name
+  playerColour: {r: 0, g: 1, b: 0, a: 1}
   tagOffSet: {x: 0, y: 3.5, z: 0}
   controller: {fileID: 3485794448389316310}
   canvasController: {fileID: 22}
@@ -475,6 +476,10 @@ PrefabInstance:
     - target: {fileID: 58, guid: 68cd7e7c655091447a6c2608fa0213eb, type: 3}
       propertyPath: m_SizeDelta.y
       value: 234
+      objectReference: {fileID: 0}
+    - target: {fileID: 26, guid: 68cd7e7c655091447a6c2608fa0213eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 66, guid: 68cd7e7c655091447a6c2608fa0213eb, type: 3}
       propertyPath: m_Material

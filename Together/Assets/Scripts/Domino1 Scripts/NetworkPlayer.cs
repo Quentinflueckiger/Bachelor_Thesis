@@ -181,8 +181,16 @@ public class NetworkPlayer : NetworkBehaviour
         GameObject timerText = GameObject.FindWithTag("Timer");
         Text timer = timerText.GetComponent<Text>();
         timer.text = Mathf.Round(curtime).ToString();
+        UpdateTimeServer(curtime);
     }
 
+    [Server]
+    public void UpdateTimeServer(float curtime)
+    {
+        GameObject timerText = GameObject.FindWithTag("Timer");
+        Text timer = timerText.GetComponent<Text>();
+        timer.text = Mathf.Round(curtime).ToString();
+    }
     private void OnChangeName(string n)
     {
         playerName = n;

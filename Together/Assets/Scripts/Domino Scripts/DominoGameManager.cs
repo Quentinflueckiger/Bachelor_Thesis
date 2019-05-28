@@ -119,7 +119,7 @@ public class DominoGameManager : MonoBehaviour
         dominoToInstantiate.transform.position = firstDominoPos.position;
         dominoToInstantiate.transform.Rotate(0, 0, 90);
     }
-
+    // TODO : CLIENT RPC / COMMAND notify players 
     private void SetPlayersHand()
     {
         foreach (GameObject player in players)
