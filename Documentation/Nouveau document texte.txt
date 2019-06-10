@@ -1,0 +1,21 @@
+Hub on smartphone (controlled by the smartphone)
+server more look less interact
+test webgl
+documentation top down / conceptuel sur l'implementation expliquer les concepts
+fondamental
+explication technique
+but
+pourquoi j'ai choisis
+problèmes
+résultat
+Affiche ? more or less same as book ~
+Book ?
+Présentation V
+	petite histoire avec les photos
+	BUT
+	.
+	.
+	Démo
+Documentation ??
+try load on playstore
+instal via android studio

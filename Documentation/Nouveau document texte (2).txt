@@ -1,0 +1,7 @@
+-Only accessible on same network
+-Connect via IP adress of host
+-Computers role is server, smartphones role is client
+-Sharing the moment
+-Possibilities of Smartcontroller sounds, hidden information, pictures, drawings ...
+-Generic, allows others to develop and add game to the platform
+-2 base game snake/domino
