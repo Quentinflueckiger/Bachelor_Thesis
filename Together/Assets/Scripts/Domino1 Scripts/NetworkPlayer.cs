@@ -19,7 +19,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar(hook = "OnChangeName"), HideInInspector]
     public string playerName = "player name";
 
-    public PlayerControllerigno controller;
+    public DominoPTest controller;
     public GameObject controllerPanel;
 
     [SyncVar]
@@ -28,7 +28,6 @@ public class NetworkPlayer : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
-        controller.OnPlayerInput += OnPlayerInput;
         if (isLocalPlayer)
             controllerPanel.SetActive(true);
 
@@ -150,23 +149,6 @@ public class NetworkPlayer : NetworkBehaviour
     public void UpdateScore(int score)
     {
         Debug.Log("score:" + score);
-    }
-
-    void OnPlayerInput(PlayerAction action, float amount)
-    {
-        if (action == PlayerAction.SHOOT)
-        {
-            CmdOnPlayerInput(action, amount);
-        }
-    }
-
-    [Command]
-    void CmdOnPlayerInput(PlayerAction action, float amount)
-    {
-        //Shoot bullets
-
-        //Update score
-        DominoLobbyManager.Instance.UpdateScore((int)amount);
     }
 
     public void UpdateTurnDisplay(string turn)
