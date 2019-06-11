@@ -5,3 +5,5 @@
 -Possibilities of Smartcontroller sounds, hidden information, pictures, drawings ...
 -Generic, allows others to develop and add game to the platform
 -2 base game snake/domino
+
+Failure [INSTALL_FAILED_NO_MATCHING_ABIS: Failed to extract native libraries, res=-113]

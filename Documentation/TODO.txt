@@ -61,3 +61,7 @@ Ideas
 - share information !!
 - Design controller (directional arrow ?)
 - video 90sec
+
+Documentation:
+papier x 2 Mr. Hudritsch + secretariat avec usb (Unity versions)
+demander à Mr. Dubuis
