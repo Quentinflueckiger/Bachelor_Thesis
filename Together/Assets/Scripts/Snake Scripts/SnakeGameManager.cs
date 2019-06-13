@@ -155,7 +155,7 @@ public class SnakeGameManager : MonoBehaviour
             player.GetComponent<SnakePlayerController>().OnEndGame();
         }
         // Show score board
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR //|| UNITY_STANDALONE
         scoreboard.SetActive(true);
 #endif
         // TODO : DONE

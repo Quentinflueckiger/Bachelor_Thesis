@@ -12,7 +12,7 @@ public class LobbyUISetUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-#if UNITY_EDITOR //|| UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE
         serverPanel.SetActive(true);
         clientPanel.SetActive(false);
 #else
