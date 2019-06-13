@@ -14,8 +14,8 @@
 - Create Lobby !!!!!!!!!!							DONE
 - Add User name and snake color (Lobby)						DONE
 - Fix connection problem on android 						DONE
-- FIX INSTALLATION PROBLEMS ON ANDROID !
-- Build it with android studio
+- FIX INSTALLATION PROBLEMS ON ANDROID !					DONE
+- Build it with android studio							DONE
 - Deploy it on the google store ?
 
 Domino
@@ -30,7 +30,7 @@ Domino
 - UI
 
 Lobby
-- List instantiation at runtime problem on android				Works fine in emulator ...
+- List instantiation at runtime problem on android				Works fine in emulator ... and on new version of android
 - Show lobby list panel on server and countdown
 	list -> lobbymanager/lobbyplayer					Partialy done (countdown)
 - Disable possibility to add more player with one controller			DONE
